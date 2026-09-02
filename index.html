@@ -2,9 +2,48 @@
 <html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="icon" type="image/png" href="/favicon.png" />
+    <!-- Adaptive Dark & Light Mode Favicons -->
+    <!-- Dark Mode: Gold mark with dark cuts on dark browser tabs -->
+    <link id="favicon-dark-32" rel="icon" type="image/png" sizes="32x32" href="/favicon-dark-32x32.png" media="(prefers-color-scheme: dark)" />
+    <link id="favicon-dark-16" rel="icon" type="image/png" sizes="16x16" href="/favicon-dark-16x16.png" media="(prefers-color-scheme: dark)" />
+    <link id="favicon-dark-main" rel="icon" type="image/png" href="/favicon-dark.png" media="(prefers-color-scheme: dark)" />
+
+    <!-- Light Mode: Gold mark with light/white cuts on light browser tabs -->
+    <link id="favicon-light-32" rel="icon" type="image/png" sizes="32x32" href="/favicon-light-32x32.png" media="(prefers-color-scheme: light)" />
+    <link id="favicon-light-16" rel="icon" type="image/png" sizes="16x16" href="/favicon-light-16x16.png" media="(prefers-color-scheme: light)" />
+    <link id="favicon-light-main" rel="icon" type="image/png" href="/favicon-light.png" media="(prefers-color-scheme: light)" />
+
+    <!-- Apple Touch Icon -->
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+    <!-- Dynamic Favicon Switcher: updates immediately when browser/OS mode changes -->
+    <script>
+      (function() {
+        function updateFavicon() {
+          var isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+          var mode = isDark ? 'dark' : 'light';
+          var links = document.querySelectorAll("link[rel*='icon']");
+          links.forEach(function(link) {
+            if (link.getAttribute('sizes') === '32x32') {
+              link.href = '/favicon-' + mode + '-32x32.png';
+            } else if (link.getAttribute('sizes') === '16x16') {
+              link.href = '/favicon-' + mode + '-16x16.png';
+            } else if (!link.getAttribute('sizes') && link.getAttribute('rel') === 'icon') {
+              link.href = '/favicon-' + mode + '.png';
+            }
+          });
+        }
+        try {
+          var mq = window.matchMedia('(prefers-color-scheme: dark)');
+          updateFavicon();
+          if (mq.addEventListener) {
+            mq.addEventListener('change', updateFavicon);
+          } else if (mq.addListener) {
+            mq.addListener(updateFavicon);
+          }
+        } catch (e) {}
+      })();
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ARCUBE — Atelier of Interior Architecture & Bespoke Sanctuaries</title>
     <meta name="description" content="Arcube is a multidisciplinary interior architecture and design atelier crafting timeless, monolithic residences, penthouses, and sensory sanctuaries worldwide." />

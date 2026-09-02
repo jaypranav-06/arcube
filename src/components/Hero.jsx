@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { ArrowDownRight } from 'lucide-react';
+import { ArrowDownRight, ChevronLeft, ChevronRight } from 'lucide-react';
 
 export default function Hero({ onOpenConsultation }) {
   const [activeSlide, setActiveSlide] = useState(0);
   const [showEasterEgg, setShowEasterEgg] = useState(false);
+  const [touchStartX, setTouchStartX] = useState(null);
 
   const heroSlides = [
     {
@@ -36,8 +37,33 @@ export default function Hero({ onOpenConsultation }) {
 
   const current = heroSlides[activeSlide];
 
+  const handleTouchStart = (e) => {
+    setTouchStartX(e.touches[0].clientX);
+  };
+
+  const handleTouchEnd = (e) => {
+    if (touchStartX === null) return;
+    const touchEndX = e.changedTouches[0].clientX;
+    const diff = touchStartX - touchEndX;
+    if (Math.abs(diff) > 40) {
+      if (diff > 0) {
+        // Swiped left -> next
+        setActiveSlide((prev) => (prev + 1) % heroSlides.length);
+      } else {
+        // Swiped right -> prev
+        setActiveSlide((prev) => (prev === 0 ? heroSlides.length - 1 : prev - 1));
+      }
+      setShowEasterEgg(false);
+    }
+    setTouchStartX(null);
+  };
+
   return (
-    <section className="relative min-h-[100svh] sm:min-h-[92vh] flex items-end justify-between overflow-hidden pb-12 sm:pb-16 pt-24 sm:pt-28 bg-[#192420]">
+    <section 
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+      className="relative min-h-[100svh] sm:min-h-[92vh] flex items-end justify-between overflow-hidden pb-12 sm:pb-16 pt-24 sm:pt-28 bg-[#192420]"
+    >
       {/* Background Architectural Canvas */}
       <div className="absolute inset-0 z-0">
         <img
@@ -130,24 +156,53 @@ export default function Hero({ onOpenConsultation }) {
             </a>
           </div>
 
-          {/* Mobile slide indicator */}
-          <div className="flex sm:hidden items-center justify-end text-xs font-mono pt-1 text-[#cfc8bc]/60">
-            <div className="flex items-center gap-1.5 py-1">
-              {heroSlides.map((slide, idx) => (
-                <button
-                  key={slide.id}
-                  onClick={() => {
-                    setActiveSlide(idx);
-                    setShowEasterEgg(false);
-                  }}
-                  className={`h-1 transition-all duration-300 rounded-full ${
-                    activeSlide === idx
-                      ? 'w-7 bg-[#D0AE89]'
-                      : 'w-2.5 bg-white/20 hover:bg-white/40'
-                  }`}
-                  aria-label={`Slide ${idx + 1}: ${slide.location}`}
-                />
-              ))}
+          {/* Mobile Tactile Stepper Controller */}
+          <div className="flex sm:hidden items-center justify-between gap-3 pt-2 text-xs font-mono">
+            {/* Current Slide Info with Pulse Dot & Tap to Cycle */}
+            <button
+              type="button"
+              onClick={() => {
+                setActiveSlide((prev) => (prev + 1) % heroSlides.length);
+                setShowEasterEgg(false);
+              }}
+              className="flex items-center gap-2 py-1 text-left active:opacity-75 transition-opacity"
+            >
+              <span className="w-2 h-2 rounded-full bg-[#D0AE89] animate-pulse flex-shrink-0"></span>
+              <div>
+                <span className="text-[10px] text-[#D0AE89] block uppercase tracking-widest leading-none mb-0.5">
+                  Vista 0{activeSlide + 1} / 03
+                </span>
+                <span className="text-xs text-[#F5F0E8] font-light">
+                  {current.location}
+                </span>
+              </div>
+            </button>
+
+            {/* Easy-to-tap Chevron Arrows (40px x 40px comfortable touch area) */}
+            <div className="flex items-center bg-[#141e1a]/95 backdrop-blur-md border border-[#D0AE89]/30 rounded-sm shadow-md">
+              <button
+                type="button"
+                onClick={() => {
+                  setActiveSlide((prev) => (prev === 0 ? heroSlides.length - 1 : prev - 1));
+                  setShowEasterEgg(false);
+                }}
+                className="w-10 h-10 flex items-center justify-center text-[#F5F0E8] hover:text-[#D0AE89] active:bg-[#D0AE89]/20 transition-colors"
+                aria-label="Previous Vista"
+              >
+                <ChevronLeft className="w-4 h-4 text-[#D0AE89]" />
+              </button>
+              <span className="w-px h-4 bg-[#D0AE89]/20"></span>
+              <button
+                type="button"
+                onClick={() => {
+                  setActiveSlide((prev) => (prev + 1) % heroSlides.length);
+                  setShowEasterEgg(false);
+                }}
+                className="w-10 h-10 flex items-center justify-center text-[#F5F0E8] hover:text-[#D0AE89] active:bg-[#D0AE89]/20 transition-colors"
+                aria-label="Next Vista"
+              >
+                <ChevronRight className="w-4 h-4 text-[#D0AE89]" />
+              </button>
             </div>
           </div>
 

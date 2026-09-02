@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowDownRight, Sparkles } from 'lucide-react';
+import { ArrowDownRight } from 'lucide-react';
 
 export default function Hero({ onOpenConsultation }) {
   const [activeSlide, setActiveSlide] = useState(0);
@@ -94,15 +94,6 @@ export default function Hero({ onOpenConsultation }) {
             </span>
           </div>
 
-          {current.hasHotspot && (
-            <button
-              onClick={() => setShowEasterEgg(!showEasterEgg)}
-              className="text-[10px] text-[#D0AE89] hover:text-[#F5F0E8] transition-colors flex items-center gap-1.5 self-start xs:self-auto py-0.5"
-            >
-              <Sparkles className="w-3 h-3" />
-              <span>{showEasterEgg ? 'Hide Landmark Tag' : 'Spot Lotus Tower'}</span>
-            </button>
-          )}
         </div>
 
         {/* Hero Headline & Tagline in thin-weight typography */}
@@ -139,10 +130,9 @@ export default function Hero({ onOpenConsultation }) {
             </a>
           </div>
 
-          {/* Minimal Vista Switcher with touch targets */}
-          <div className="flex items-center justify-between sm:justify-start gap-3 text-xs font-mono pt-1 sm:pt-0">
-            <span className="text-[#cfc8bc]/50 text-[10px] uppercase tracking-widest mr-1">VISTA:</span>
-            <div className="flex items-center gap-2 sm:gap-3">
+          {/* Mobile slide indicator */}
+          <div className="flex sm:hidden items-center justify-end text-xs font-mono pt-1 text-[#cfc8bc]/60">
+            <div className="flex items-center gap-1.5 py-1">
               {heroSlides.map((slide, idx) => (
                 <button
                   key={slide.id}
@@ -150,10 +140,31 @@ export default function Hero({ onOpenConsultation }) {
                     setActiveSlide(idx);
                     setShowEasterEgg(false);
                   }}
-                  className={`px-2.5 py-1 transition-all rounded-sm ${
+                  className={`h-1 transition-all duration-300 rounded-full ${
                     activeSlide === idx
-                      ? 'text-[#D0AE89] border-b-2 border-[#D0AE89] font-medium bg-[#141e1a]/40'
-                      : 'text-[#cfc8bc]/50 hover:text-[#F5F0E8]'
+                      ? 'w-7 bg-[#D0AE89]'
+                      : 'w-2.5 bg-white/20 hover:bg-white/40'
+                  }`}
+                  aria-label={`Slide ${idx + 1}: ${slide.location}`}
+                />
+              ))}
+            </div>
+          </div>
+
+          {/* Desktop Controller */}
+          <div className="hidden sm:flex items-center gap-3 text-xs font-mono">
+            <div className="flex items-center gap-1 p-1 rounded-sm bg-[#141e1a]/90 backdrop-blur-md border border-[#D0AE89]/20">
+              {heroSlides.map((slide, idx) => (
+                <button
+                  key={slide.id}
+                  onClick={() => {
+                    setActiveSlide(idx);
+                    setShowEasterEgg(false);
+                  }}
+                  className={`px-3 py-1 text-xs font-mono rounded-sm transition-all ${
+                    activeSlide === idx
+                      ? 'bg-[#D0AE89] text-[#192420] font-semibold'
+                      : 'text-[#cfc8bc]/60 hover:text-[#F5F0E8]'
                   }`}
                 >
                   0{idx + 1}

@@ -68,13 +68,17 @@ export default function ConsultationModal({ isOpen, onClose }) {
 
         {!isSubmitted ? (
           <div>
-            {/* Header & Step Tracker */}
             <div className="mb-6 sm:mb-8 pr-8">
-              <img 
-                src="/images/brand/arcube-logo.png" 
-                alt="Arcube" 
-                className="h-6 sm:h-7 w-auto object-contain mb-3 sm:mb-4"
-              />
+              <div className="flex items-center gap-2 mb-3 sm:mb-4">
+                <img 
+                  src="/images/brand/arcube-emblem.png" 
+                  alt="Arcube" 
+                  className="h-6 sm:h-7 w-auto object-contain"
+                />
+                <span className="text-lg sm:text-xl font-light tracking-[0.22em] text-[#F5F0E8] lowercase">
+                  arcube
+                </span>
+              </div>
               <div className="flex items-center gap-2 text-[10px] sm:text-xs font-mono text-[#D0AE89] tracking-widest uppercase mb-1.5">
                 <Sparkles className="w-3.5 h-3.5" />
                 <span>Your Enquiry // Step {step} of 3</span>

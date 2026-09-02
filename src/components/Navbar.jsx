@@ -71,12 +71,15 @@ export default function Navbar({ onOpenConsultation }) {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-10 flex items-center justify-between">
           {/* Logo placed in the top-left with clear padding */}
-          <a href="#" className="flex items-center group py-1" aria-label="Arcube Home">
+          <a href="#" className="flex items-center gap-2.5 sm:gap-3 group py-1" aria-label="Arcube Home">
             <img
-              src="/images/brand/arcube-logo.png"
+              src="/images/brand/arcube-emblem.png"
               alt="Arcube"
-              className="h-8 sm:h-10 w-auto object-contain rounded-sm transition-transform duration-300 group-hover:scale-[1.03]"
+              className="h-8 sm:h-9 w-auto object-contain transition-transform duration-300 group-hover:scale-[1.05]"
             />
+            <span className="text-lg sm:text-xl font-light tracking-[0.22em] text-[#F5F0E8] group-hover:text-[#D0AE89] transition-colors lowercase">
+              arcube
+            </span>
           </a>
 
           {/* Desktop Navigation Links */}

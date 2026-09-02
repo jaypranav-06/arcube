@@ -35,11 +35,16 @@ export default function Footer({ onOpenConsultation }) {
         <div className="py-10 sm:py-14 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 sm:gap-8 border-b border-[#D0AE89]/10">
           <div>
             {/* Real Brand Logo */}
-            <img
-              src="/images/brand/arcube-logo.png"
-              alt="Arcube"
-              className="h-8 sm:h-9 w-auto object-contain rounded-sm mb-2 sm:mb-3"
-            />
+            <div className="flex items-center gap-2.5 mb-2 sm:mb-3">
+              <img
+                src="/images/brand/arcube-emblem.png"
+                alt="Arcube"
+                className="h-8 sm:h-9 w-auto object-contain"
+              />
+              <span className="text-xl sm:text-2xl font-light tracking-[0.22em] text-[#F5F0E8] lowercase">
+                arcube
+              </span>
+            </div>
             <div className="text-[11px] font-mono text-[#cfc8bc]/60 tracking-wider">
               Architecture & Interior Design Studio • Colombo 06
             </div>

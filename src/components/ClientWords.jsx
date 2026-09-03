@@ -5,7 +5,7 @@ export default function ClientWords() {
   const testimonials = [
     {
       id: 1,
-      quote: "Our living room stays so much cooler in the heat now. The custom teak cabinets are beautiful and fitted neatly.",
+      quote: "Our living room stays so much cooler in the heat now. The custom cabinets are beautiful and fitted neatly.",
       author: "Priyanka & Kanishka",
       context: "Home renovation, Colombo 07"
     },

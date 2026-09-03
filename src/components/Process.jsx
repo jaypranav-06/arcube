@@ -14,7 +14,7 @@ export default function Process({ onOpenConsultation }) {
       number: '02',
       icon: FileText,
       title: '3D designs & samples',
-      description: 'We create 3D views of your rooms. You can touch real teak wood, stone, and fabric samples.',
+      description: 'We create 3D views of your rooms. You can explore real material, finish, and fabric samples.',
       deliverable: '3D pictures and real material samples.'
     },
     {

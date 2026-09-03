@@ -190,7 +190,7 @@ export default function Hero({ onOpenConsultation }) {
             <span className="font-extralight text-[#D0AE89]">for real living.</span>
           </h1>
           <p className="text-sm sm:text-base md:text-lg text-[#F5F0E8]/90 font-sans font-normal max-w-lg leading-relaxed">
-            We create calm, modern homes and apartments in Sri Lanka using real teak wood, cool stone, and warm lighting.
+            We create calm, modern homes and apartments in Sri Lanka designed for comfort, warmth, and daily living.
           </p>
         </div>
 

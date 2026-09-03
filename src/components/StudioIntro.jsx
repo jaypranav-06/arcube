@@ -30,7 +30,7 @@ export default function StudioIntro({ onOpenConsultation }) {
               Calm, modern interiors built to stay cool.
             </h2>
             <p className="text-sm sm:text-base text-[#cfc8bc] font-normal leading-relaxed max-w-2xl font-sans">
-              Arcube is an interior design studio based in Colombo 06. We help you turn bare spaces into beautiful, functional homes. We use real Ceylon teak wood, smooth cut-cement, and natural stone — materials chosen to stay cool, handle humidity, and look better as they age.
+              Arcube is an interior design studio based in Colombo 06. We help you turn bare spaces into beautiful, functional homes designed for everyday living, comfort, and lasting quality.
             </p>
           </div>
 

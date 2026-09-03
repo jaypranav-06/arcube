@@ -11,8 +11,8 @@ export default function Services({ onOpenConsultation }) {
     },
     {
       number: '02',
-      title: 'Custom teak furniture & cabinets',
-      description: 'Built-in wardrobes, modern kitchens, dining tables, and TV consoles made from real Ceylon teak wood and quality hardware.',
+      title: 'Custom furniture & cabinetry',
+      description: 'Built-in wardrobes, modern kitchens, dining tables, and TV consoles built to measure with quality materials and hardware.',
       deliverable: 'Made-to-measure furniture built by master carpenters.'
     },
     {
@@ -24,7 +24,7 @@ export default function Services({ onOpenConsultation }) {
     {
       number: '04',
       title: 'Home renovations & villa makeovers',
-      description: 'Refreshing older houses, apartments, and holiday villas with cool cement floors, fresh paint, and modern fittings.',
+      description: 'Refreshing older houses, apartments, and holiday villas with fresh layouts, clean finishes, and modern fittings.',
       deliverable: 'Full renovation with daily site supervision.'
     }
   ];

@@ -21,12 +21,12 @@ export default function ConsultationModal({ isOpen, onClose }) {
   if (!isOpen) return null;
 
   const elementOptions = [
-    'Custom Teak Cabinets & Furniture',
-    'Cool Cut-Cement Wall Plaster',
+    'Custom Cabinets & Furniture',
+    'Wall Finishes & Custom Plaster',
     'Warm Cove Lighting & Dimming',
     'Quiet Sound Insulation',
     'Courtyard Garden & Greenery',
-    'Natural Stone Bathroom & Vanity'
+    'Modern Bathroom & Vanity'
   ];
 
   const toggleElement = (item) => {

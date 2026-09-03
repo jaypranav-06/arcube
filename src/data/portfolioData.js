@@ -9,7 +9,7 @@ export const portfolioProjects = [
     area: '7,800 sq.ft',
     image: '/images/colombo-lotus-hero.jpg',
     tagline: 'Sunken Roman travertine hearth framing the illuminated Colombo Lotus Tower.',
-    excerpt: 'High above Beira Lake in Colombo 02, framing direct views of the Lotus Tower with warm teak wood and natural stone.',
+    excerpt: 'High above Beira Lake in Colombo 02, framing direct views of the Lotus Tower with warm lighting and clean modern finishes.',
     materials: ['Roman Silver Travertine', 'Fluted Ceylon Teak', 'Champagne Brass', 'Ivory Bouclé'],
     description: `Situated along Sir James Peiris Mawatha with direct panoramic vistas over Beira Lake, The Lotus Sky Residence is Arcube’s flagship high-rise commission in Colombo.
     
@@ -36,7 +36,7 @@ Through custom acoustic floor-to-ceiling curtain glazing, the main living pavili
     area: '6,400 sq.ft',
     image: '/images/sl-minimal-living.jpg',
     tagline: 'Cut-cement tranquility anchored by a blossoming temple tree courtyard and reflection pool.',
-    excerpt: 'A quiet family home in Colombo 07 featuring cool cement walls, handmade teak furniture, and a tranquil courtyard pool.',
+    excerpt: 'A quiet family home in Colombo 07 featuring open living spaces, custom furniture, and a tranquil courtyard pool.',
     materials: ['Polished Cut-Cement Plaster', 'Aged Ceylon Teak & Woven Cane', 'Natural Belgian Linen', 'Miriswatta River Stones'],
     description: `Hidden behind tall discreet boundary walls on Barnes Place in Cinnamon Gardens, this residence draws direct inspiration from Sri Lanka’s tropical modernist heritage.
     

@@ -3,7 +3,6 @@ import { ArrowDownRight, ChevronLeft, ChevronRight } from 'lucide-react';
 
 export default function Hero({ onOpenConsultation }) {
   const [activeSlide, setActiveSlide] = useState(0);
-  const [showEasterEgg, setShowEasterEgg] = useState(false);
   const [touchStartX, setTouchStartX] = useState(null);
 
   const heroSlides = [
@@ -56,7 +55,6 @@ export default function Hero({ onOpenConsultation }) {
           // Swiped right -> prev
           setActiveSlide((prev) => (prev === 0 ? heroSlides.length - 1 : prev - 1));
         }
-        setShowEasterEgg(false);
       }
     }
     setTouchStartX(null);
@@ -81,39 +79,6 @@ export default function Hero({ onOpenConsultation }) {
         <div className="absolute inset-0 bg-[#192420]/35"></div>
       </div>
 
-
-
-      {/* Lotus Tower Landmark Hotspot Marker */}
-      {current.hasHotspot && (
-        <div
-          className="absolute z-30"
-          style={{ top: current.hotspotY, left: current.hotspotX, transform: 'translate(-50%, -50%)' }}
-        >
-          <div
-            className="relative group cursor-pointer p-2"
-            onClick={() => setShowEasterEgg(!showEasterEgg)}
-          >
-
-            {/* Tooltip */}
-            <div
-              className={`absolute bottom-full left-1/2 -translate-x-1/2 mb-3 w-52 sm:w-56 p-3 rounded-sm bg-[#141e1a]/95 border border-[#D0AE89]/30 backdrop-blur-xl text-left transition-all ${
-                showEasterEgg ? 'block' : 'hidden group-hover:block'
-              }`}
-            >
-              <div className="text-[9px] font-mono text-[#D0AE89] uppercase tracking-wider mb-0.5">
-                Colombo Landmark
-              </div>
-              <div className="text-xs text-[#F5F0E8] font-normal">
-                Colombo Lotus Tower
-              </div>
-              <p className="text-[10px] text-[#cfc8bc] font-light mt-0.5 leading-snug">
-                Nelum Kuluna framed across Beira Lake.
-              </p>
-            </div>
-          </div>
-        </div>
-      )}
-
       {/* Main Content */}
       <div className="relative z-10 max-w-7xl w-full mx-auto px-4 sm:px-8 lg:px-10 flex flex-col justify-end">
         {/* Top Bar on Mobile: Vista Stepper brought UP above the headline */}
@@ -123,7 +88,6 @@ export default function Hero({ onOpenConsultation }) {
             type="button"
             onClick={() => {
               setActiveSlide((prev) => (prev + 1) % heroSlides.length);
-              setShowEasterEgg(false);
             }}
             className="flex items-center gap-2 py-0.5 text-left active:opacity-75 transition-opacity"
           >
@@ -144,7 +108,6 @@ export default function Hero({ onOpenConsultation }) {
               type="button"
               onClick={() => {
                 setActiveSlide((prev) => (prev === 0 ? heroSlides.length - 1 : prev - 1));
-                setShowEasterEgg(false);
               }}
               className="w-8 h-8 flex items-center justify-center text-[#F5F0E8] hover:text-[#D0AE89] active:bg-[#D0AE89]/20 transition-colors"
               aria-label="Previous Vista"
@@ -156,7 +119,6 @@ export default function Hero({ onOpenConsultation }) {
               type="button"
               onClick={() => {
                 setActiveSlide((prev) => (prev + 1) % heroSlides.length);
-                setShowEasterEgg(false);
               }}
               className="w-8 h-8 flex items-center justify-center text-[#F5F0E8] hover:text-[#D0AE89] active:bg-[#D0AE89]/20 transition-colors"
               aria-label="Next Vista"
@@ -222,7 +184,6 @@ export default function Hero({ onOpenConsultation }) {
                   key={slide.id}
                   onClick={() => {
                     setActiveSlide(idx);
-                    setShowEasterEgg(false);
                   }}
                   className={`px-3 py-1 text-xs font-sans rounded-sm transition-all ${
                     activeSlide === idx

@@ -45,19 +45,9 @@ export default function Services({ onOpenConsultation }) {
           </div>
 
           <div className="lg:col-span-7 flex flex-col justify-end">
-            <p className="text-sm sm:text-base text-[#cfc8bc] font-sans leading-relaxed mb-3">
+            <p className="text-sm sm:text-base text-[#cfc8bc] font-sans leading-relaxed">
               We handle everything from empty rooms to the day you move in. You work directly with our lead designer and our trusted team of carpenters and painters.
             </p>
-            <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-xs font-sans text-[#cfc8bc]/70">
-              <span className="flex items-center gap-1.5 text-[#D0AE89]">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#D0AE89]"></span>
-                Colombo 06 Studio
-              </span>
-              <span>•</span>
-              <span>Colombo Homes & Apartments</span>
-              <span>•</span>
-              <span>Southern Villas</span>
-            </div>
           </div>
         </div>
 

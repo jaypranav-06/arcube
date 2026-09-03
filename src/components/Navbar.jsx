@@ -94,10 +94,10 @@ export default function Navbar({ onOpenConsultation }) {
 
           {/* Actions: Primary Gold CTA + Mobile Hamburger */}
           <div className="flex items-center gap-2.5 sm:gap-4">
-            {/* Primary CTA in Gold-Tan */}
+            {/* Primary CTA in Gold-Tan (desktop/tablet; mobile has it inside drawer) */}
             <button
               onClick={onOpenConsultation}
-              className="px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-sm bg-[#D0AE89] hover:bg-[#c49e75] text-[#192420] text-xs font-sans font-medium tracking-[0.08em] transition-all shadow-[0_4px_16px_rgba(208,174,137,0.2)] flex items-center gap-1.5 active:scale-[0.99]"
+              className="hidden sm:flex px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-sm bg-[#D0AE89] hover:bg-[#c49e75] text-[#192420] text-xs font-sans font-medium tracking-[0.08em] transition-all shadow-[0_4px_16px_rgba(208,174,137,0.2)] items-center gap-1.5 active:scale-[0.99]"
             >
               <span>Book consultation</span>
               <ArrowUpRight className="w-3 h-3 sm:w-3.5 sm:h-3.5" />

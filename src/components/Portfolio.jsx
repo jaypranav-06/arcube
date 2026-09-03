@@ -79,17 +79,10 @@ export default function Portfolio({ onOpenConsultation }) {
                 />
                 <div className="absolute inset-0 bg-[#192420]/20 group-hover:bg-transparent transition-colors duration-500"></div>
 
-                {/* Honest Status Badge & Category */}
-                <div className="absolute top-3 left-3 z-10 flex items-center gap-1.5">
-                  <span className="text-[10px] font-sans tracking-wider text-[#F5F0E8] bg-[#192420]/90 backdrop-blur-md px-2.5 py-1 border border-[#D0AE89]/20 rounded-sm">
+                {/* Category Badge */}
+                <div className="absolute top-3 left-3 z-10">
+                  <span className="text-[10px] font-sans tracking-wider uppercase text-[#F5F0E8] bg-[#192420]/90 backdrop-blur-md px-2.5 py-1 border border-[#D0AE89]/20 rounded-sm">
                     {project.category}
-                  </span>
-                  <span className={`text-[10px] font-sans tracking-wider px-2 py-1 rounded-sm backdrop-blur-md border ${
-                    project.status === 'Completed project'
-                      ? 'bg-emerald-950/80 border-emerald-500/30 text-emerald-300'
-                      : 'bg-amber-950/80 border-amber-500/30 text-amber-300'
-                  }`}>
-                    {project.status}
                   </span>
                 </div>
 

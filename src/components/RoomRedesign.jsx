@@ -257,8 +257,8 @@ export default function RoomRedesign() {
           </div>
         </div>
 
-        {/* 4-Step Responsive Progress Tracker */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-4 mb-6 sm:mb-10">
+        {/* 4-Step Progress Tracker: Desktop only for clean mobile flow */}
+        <div className="hidden md:grid md:grid-cols-4 gap-2.5 sm:gap-4 mb-6 sm:mb-10">
           {[
             { step: 1, title: 'Upload photo', desc: 'Picture of your room' },
             { step: 2, title: 'Pick style', desc: 'Room type and look' },

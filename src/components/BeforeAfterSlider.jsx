@@ -27,20 +27,20 @@ export default function BeforeAfterSlider() {
   const handleEnd = () => setIsDragging(false);
 
   return (
-    <section id="transformation" className="py-16 sm:py-24 bg-[#141e1a] border-t border-b border-[#D0AE89]/15">
+    <section id="transformation" className="py-12 sm:py-20 bg-[#141e1a] border-t border-b border-[#D0AE89]/15">
       <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-10">
         {/* Minimal Header */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 sm:mb-12 pb-5 sm:pb-6 border-b border-[#D0AE89]/15">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-6 sm:mb-10 pb-4 sm:pb-6 border-b border-[#D0AE89]/15 gap-3">
           <div>
-            <span className="text-[10px] font-mono text-[#D0AE89] tracking-[0.3em] uppercase block mb-1.5 sm:mb-2">
-              Metamorphosis
+            <span className="text-xs font-medium text-[#D0AE89] tracking-[0.15em] uppercase block mb-1.5 font-sans">
+              Before & after
             </span>
-            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-light text-[#F5F0E8] tracking-wide">
-              The Evolution of <span className="font-extralight text-[#D0AE89] tracking-wider">Space</span>
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-light text-[#F5F0E8] font-display tracking-tight">
+              See the <span className="font-extralight text-[#D0AE89]">transformation</span>
             </h2>
           </div>
-          <p className="text-[#cfc8bc]/70 text-xs font-light tracking-wider mt-2.5 sm:mt-0 uppercase">
-            Bare Concrete → Finished Home
+          <p className="text-[#cfc8bc] text-xs sm:text-sm font-sans tracking-wide">
+            From bare concrete to a finished, comfortable home.
           </p>
         </div>
 
@@ -90,16 +90,16 @@ export default function BeforeAfterSlider() {
             </div>
 
             {/* Floating Minimal Labels */}
-            <div className="absolute top-3 sm:top-4 left-3 sm:left-4 z-20 px-2 sm:px-2.5 py-1 bg-[#192420]/90 backdrop-blur-md border border-[#D0AE89]/20 text-[9px] sm:text-[10px] font-mono tracking-widest text-[#F5F0E8] uppercase pointer-events-none rounded-sm">
+            <div className="absolute top-3 sm:top-4 left-3 sm:left-4 z-20 px-2.5 sm:px-3 py-1 bg-[#192420]/90 backdrop-blur-md border border-[#D0AE89]/20 text-xs font-sans tracking-wider text-[#F5F0E8] pointer-events-none rounded-sm">
               Before
             </div>
 
-            <div className="absolute top-3 sm:top-4 right-3 sm:right-4 z-20 px-2 sm:px-2.5 py-1 bg-[#192420]/90 backdrop-blur-md border border-[#D0AE89]/30 text-[9px] sm:text-[10px] font-mono tracking-widest text-[#D0AE89] uppercase pointer-events-none rounded-sm">
+            <div className="absolute top-3 sm:top-4 right-3 sm:right-4 z-20 px-2.5 sm:px-3 py-1 bg-[#192420]/90 backdrop-blur-md border border-[#D0AE89]/30 text-xs font-sans tracking-wider text-[#D0AE89] pointer-events-none rounded-sm">
               After
             </div>
 
             {/* Percentage indicator */}
-            <div className="absolute bottom-3 sm:bottom-4 left-1/2 -translate-x-1/2 z-20 px-3 py-1 bg-[#192420]/90 backdrop-blur-md border border-[#D0AE89]/20 text-[9px] sm:text-[10px] font-mono text-[#cfc8bc] pointer-events-none rounded-sm whitespace-nowrap">
+            <div className="absolute bottom-3 sm:bottom-4 left-1/2 -translate-x-1/2 z-20 px-3 py-1 bg-[#192420]/90 backdrop-blur-md border border-[#D0AE89]/20 text-xs font-sans text-[#cfc8bc] pointer-events-none rounded-sm whitespace-nowrap">
               {Math.round(sliderPosition)}% • Drag to compare
             </div>
           </div>

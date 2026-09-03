@@ -218,30 +218,30 @@ export default function RoomRedesign() {
   const activeStep = getActiveStep();
 
   return (
-    <section id="redesign" className="py-16 sm:py-24 lg:py-28 bg-[#141e1a] relative border-t border-b border-[#D0AE89]/15">
+    <section id="redesign" className="py-12 sm:py-20 lg:py-24 bg-[#141e1a] relative border-t border-b border-[#D0AE89]/15">
       <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-10">
 
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-10 pb-5 sm:pb-6 border-b border-[#D0AE89]/15 gap-4">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-6 sm:mb-10 pb-4 sm:pb-6 border-b border-[#D0AE89]/15 gap-3">
           <div>
-            <span className="text-[10px] font-mono text-[#D0AE89] tracking-[0.3em] uppercase block mb-2">
-              AI Studio — 2 Free Redesigns
+            <span className="text-xs font-medium text-[#D0AE89] tracking-[0.15em] uppercase block mb-1.5 font-sans">
+              Free room preview tool
             </span>
-            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-light text-[#F5F0E8] tracking-wide">
-              Redesign <span className="font-extralight text-[#D0AE89] tracking-wider">Your Room</span>
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-light text-[#F5F0E8] font-display tracking-tight">
+              See new ideas <span className="font-extralight text-[#D0AE89]">for your room</span>
             </h2>
           </div>
-          <div className="flex flex-wrap items-center gap-2.5 self-start md:self-auto">
-            <div className="px-3.5 py-1.5 rounded-sm bg-[#192420] border border-[#D0AE89]/20 text-xs font-mono text-[#F5F0E8] flex items-center gap-2">
-              <span className="text-[10px] uppercase text-[#cfc8bc]/70">Attempts used:</span>
-              <span className="text-[#D0AE89] font-medium">{generations.length} / 2</span>
+          <div className="flex flex-wrap items-center gap-2 self-start md:self-auto">
+            <div className="px-3 py-1.5 rounded-sm bg-[#192420] border border-[#D0AE89]/20 text-xs font-sans text-[#F5F0E8] flex items-center gap-2">
+              <span className="text-xs text-[#cfc8bc]/70">Free previews:</span>
+              <span className="text-[#D0AE89] font-medium">{generations.length} / 2 used</span>
             </div>
             {generations.length === 1 && viewState !== 'result' && (
               <button
                 onClick={() => { setActiveGenerationIndex(0); setViewState('result'); }}
                 className="px-3 py-1.5 rounded-sm border border-[#D0AE89]/50 text-[#D0AE89] hover:bg-[#D0AE89]/10 text-xs font-medium transition-all"
               >
-                View Design 1
+                View design 1
               </button>
             )}
             {generations.length >= 2 && viewState !== 'compare' && (
@@ -249,19 +249,19 @@ export default function RoomRedesign() {
                 onClick={() => setViewState('compare')}
                 className="px-3 py-1.5 rounded-sm border border-[#D0AE89] text-[#D0AE89] hover:bg-[#D0AE89] hover:text-[#192420] text-xs font-medium transition-all"
               >
-                Compare 2
+                Compare both
               </button>
             )}
           </div>
         </div>
 
         {/* 4-Step Responsive Progress Tracker */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-4 mb-8 sm:mb-12">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-4 mb-6 sm:mb-10">
           {[
-            { step: 1, title: 'Upload Room', desc: 'Photo of your current space' },
-            { step: 2, title: 'Choose Style', desc: 'Room type & aesthetic chips' },
-            { step: 3, title: 'AI Redesign', desc: 'Instant architectural transformation' },
-            { step: 4, title: 'Compare & Inquire', desc: 'Pick favorite & connect with team' },
+            { step: 1, title: 'Upload photo', desc: 'Picture of your room' },
+            { step: 2, title: 'Pick style', desc: 'Room type and look' },
+            { step: 3, title: 'See preview', desc: 'Instant redesign' },
+            { step: 4, title: 'Talk to us', desc: 'Get expert advice' },
           ].map((item) => {
             const isCompleted = activeStep > item.step;
             const isCurrent = activeStep === item.step;
@@ -277,7 +277,7 @@ export default function RoomRedesign() {
                 }`}
               >
                 <div
-                  className={`w-6 h-6 sm:w-8 sm:h-8 rounded-full flex items-center justify-center text-[11px] sm:text-xs font-mono flex-shrink-0 transition-colors ${
+                  className={`w-6 h-6 sm:w-8 sm:h-8 rounded-full flex items-center justify-center text-[11px] sm:text-xs font-sans flex-shrink-0 transition-colors ${
                     isCurrent
                       ? 'bg-[#D0AE89] text-[#192420] font-semibold'
                       : isCompleted
@@ -288,7 +288,7 @@ export default function RoomRedesign() {
                   {isCompleted ? '✓' : `0${item.step}`}
                 </div>
                 <div className="overflow-hidden">
-                  <span className={`text-[9px] sm:text-[10px] font-mono uppercase block ${isCurrent ? 'text-[#D0AE89]' : 'text-[#cfc8bc]/50'}`}>
+                  <span className={`text-[9px] sm:text-[10px] font-sans uppercase block ${isCurrent ? 'text-[#D0AE89]' : 'text-[#cfc8bc]/50'}`}>
                     Step 0{item.step}
                   </span>
                   <div className="text-[11px] sm:text-xs text-[#F5F0E8] font-medium truncate">
@@ -314,11 +314,11 @@ export default function RoomRedesign() {
             {/* Upload */}
             <div className="lg:col-span-5 flex flex-col gap-4">
               <div className="flex items-center justify-between">
-                <span className="text-xs font-mono text-[#D0AE89] uppercase tracking-widest">
-                  1 — Upload Your Room
+                <span className="text-xs font-sans text-[#D0AE89] uppercase tracking-widest">
+                  1 — Upload your room
                 </span>
                 {uploadedImage && (
-                  <span className="text-[10px] font-mono text-emerald-400">● Photo loaded</span>
+                  <span className="text-[10px] font-sans text-emerald-400">● Photo loaded</span>
                 )}
               </div>
 
@@ -333,7 +333,7 @@ export default function RoomRedesign() {
                   <>
                     <img src={uploadedImage} alt="Uploaded room" className="w-full h-full object-cover" />
                     <div className="absolute inset-0 bg-[#192420]/50 opacity-0 hover:opacity-100 transition-opacity flex items-center justify-center">
-                      <span className="px-3.5 py-1.5 rounded-sm bg-[#D0AE89] text-[#192420] text-xs font-medium uppercase tracking-wider">Change Photo</span>
+                      <span className="px-3.5 py-1.5 rounded-sm bg-[#D0AE89] text-[#192420] text-xs font-medium uppercase tracking-wider">Change photo</span>
                     </div>
                   </>
                 ) : (
@@ -342,8 +342,8 @@ export default function RoomRedesign() {
                       <Upload className="w-5 h-5" />
                     </div>
                     <p className="text-sm text-[#F5F0E8] font-light mb-1">Drag & drop your room photo here</p>
-                    <span className="text-xs font-mono text-[#cfc8bc]/60 mb-3">or click to browse</span>
-                    <span className="text-[10px] font-mono text-[#D0AE89]/80 px-2.5 py-1 rounded-sm bg-[#141e1a] border border-[#D0AE89]/20">
+                    <span className="text-xs font-sans text-[#cfc8bc]/60 mb-3">or click to browse</span>
+                    <span className="text-[10px] font-sans text-[#D0AE89]/80 px-2.5 py-1 rounded-sm bg-[#141e1a] border border-[#D0AE89]/20">
                       JPG, PNG or WebP
                     </span>
                   </div>
@@ -352,7 +352,7 @@ export default function RoomRedesign() {
               </div>
 
               <div>
-                <span className="text-[10px] font-mono text-[#cfc8bc]/70 uppercase tracking-widest block mb-2">Or try a sample room:</span>
+                <span className="text-[10px] font-sans text-[#cfc8bc]/70 uppercase tracking-widest block mb-2">Or explore with a sample room:</span>
                 <div className="grid grid-cols-3 gap-2">
                   {SAMPLE_ROOMS.map((sample) => (
                     <button
@@ -365,7 +365,7 @@ export default function RoomRedesign() {
                     >
                       <img src={sample.image} alt={sample.label} className="w-full h-full object-cover" />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-                      <span className="absolute bottom-1.5 left-1.5 right-1.5 text-[10px] font-mono text-[#F5F0E8] truncate block">{sample.label}</span>
+                      <span className="absolute bottom-1.5 left-1.5 right-1.5 text-[10px] font-sans text-[#F5F0E8] truncate block">{sample.label}</span>
                     </button>
                   ))}
                 </div>
@@ -374,14 +374,14 @@ export default function RoomRedesign() {
 
             {/* Options */}
             <div className="lg:col-span-7 space-y-6">
-              <span className="text-xs font-mono text-[#D0AE89] uppercase tracking-widest border-b border-[#D0AE89]/15 pb-2 block">
-                2 — Choose Room Type & Style
+              <span className="text-xs font-sans text-[#D0AE89] uppercase tracking-widest border-b border-[#D0AE89]/15 pb-2 block">
+                2 — Choose room type & style
               </span>
 
               <div>
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-[10px] font-mono text-[#cfc8bc]/70 uppercase tracking-widest">Room type:</span>
-                  <span className="text-xs font-mono text-[#D0AE89]">{selectedRoomType}</span>
+                  <span className="text-[10px] font-sans text-[#cfc8bc]/70 uppercase tracking-widest">Room type:</span>
+                  <span className="text-xs font-sans text-[#D0AE89]">{selectedRoomType}</span>
                 </div>
                 <div className="flex flex-wrap gap-2">
                   {ROOM_TYPES.map((type) => (
@@ -403,8 +403,8 @@ export default function RoomRedesign() {
 
               <div>
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-[10px] font-mono text-[#cfc8bc]/70 uppercase tracking-widest">Style:</span>
-                  <span className="text-xs font-mono text-[#D0AE89]">{selectedStyle}</span>
+                  <span className="text-[10px] font-sans text-[#cfc8bc]/70 uppercase tracking-widest">Style:</span>
+                  <span className="text-xs font-sans text-[#D0AE89]">{selectedStyle}</span>
                 </div>
                 <div className="flex flex-wrap gap-2">
                   {STYLES.map((style) => (
@@ -425,7 +425,7 @@ export default function RoomRedesign() {
               </div>
 
               <div>
-                <label className="text-[10px] font-mono text-[#cfc8bc]/70 uppercase tracking-widest block mb-2">
+                <label className="text-[10px] font-sans text-[#cfc8bc]/70 uppercase tracking-widest block mb-2">
                   Extra detail (optional):
                 </label>
                 <input
@@ -439,7 +439,7 @@ export default function RoomRedesign() {
               </div>
 
               <div className="pt-4 border-t border-[#D0AE89]/15 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
-                <span className="text-xs font-mono text-[#cfc8bc]/70 flex items-center gap-2">
+                <span className="text-xs font-sans text-[#cfc8bc]/70 flex items-center gap-2">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
                   {generations.length === 0 ? 'Attempt 1 of 2 free' : 'Attempt 2 of 2 free'}
                 </span>
@@ -470,7 +470,7 @@ export default function RoomRedesign() {
 
             <form onSubmit={handleGateSubmit} className="space-y-4">
               <div>
-                <label className="text-[10px] font-mono tracking-widest text-[#D0AE89] uppercase block mb-1.5">Your Full Name</label>
+                <label className="text-[10px] font-sans tracking-widest text-[#D0AE89] uppercase block mb-1.5">Your Full Name</label>
                 <div className="relative">
                   <User className="w-4 h-4 text-[#D0AE89] absolute left-3 top-1/2 -translate-y-1/2" />
                   <input
@@ -485,7 +485,7 @@ export default function RoomRedesign() {
               </div>
 
               <div>
-                <label className="text-[10px] font-mono tracking-widest text-[#D0AE89] uppercase block mb-1.5">Phone or WhatsApp</label>
+                <label className="text-[10px] font-sans tracking-widest text-[#D0AE89] uppercase block mb-1.5">Phone or WhatsApp</label>
                 <div className="relative">
                   <Phone className="w-4 h-4 text-[#D0AE89] absolute left-3 top-1/2 -translate-y-1/2" />
                   <input
@@ -499,13 +499,13 @@ export default function RoomRedesign() {
                 </div>
               </div>
 
-              <div className="p-3 rounded-sm bg-[#141e1a] border border-[#D0AE89]/10 flex items-center gap-2.5 text-[10px] font-mono text-[#cfc8bc]/70">
+              <div className="p-3 rounded-sm bg-[#141e1a] border border-[#D0AE89]/10 flex items-center gap-2.5 text-[10px] font-sans text-[#cfc8bc]/70">
                 <ShieldCheck className="w-4 h-4 text-[#D0AE89] flex-shrink-0" />
                 <span>Saved to your session — not asked again on your 2nd attempt.</span>
               </div>
 
               <div className="pt-4 flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-between gap-3">
-                <button type="button" onClick={() => setViewState('select')} className="text-xs font-mono text-[#cfc8bc] hover:text-[#F5F0E8] py-2.5 text-center">
+                <button type="button" onClick={() => setViewState('select')} className="text-xs font-sans text-[#cfc8bc] hover:text-[#F5F0E8] py-2.5 text-center">
                   ← Back
                 </button>
                 <button type="submit" className="w-full sm:w-auto px-6 py-3.5 rounded-sm bg-[#D0AE89] hover:bg-[#c49e75] text-[#192420] text-xs font-medium uppercase tracking-[0.18em] transition-all flex items-center justify-center gap-2 shadow-lg">
@@ -521,7 +521,7 @@ export default function RoomRedesign() {
         {viewState === 'generating' && (
           <div className="max-w-xl mx-auto py-16 text-center">
             <div className="w-16 h-16 rounded-full bg-[#192420] border-2 border-[#D0AE89] border-t-transparent animate-spin mx-auto mb-6"></div>
-            <span className="text-[10px] font-mono text-[#D0AE89] uppercase tracking-widest block mb-2">
+            <span className="text-[10px] font-sans text-[#D0AE89] uppercase tracking-widest block mb-2">
               {selectedRoomType} → {selectedStyle}
             </span>
             <h3 className="text-2xl sm:text-3xl text-[#F5F0E8] font-light tracking-wide mb-3">
@@ -538,7 +538,7 @@ export default function RoomRedesign() {
           <div className="space-y-8">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-[#D0AE89]/15">
               <div>
-                <div className="flex items-center gap-2 text-xs font-mono text-[#D0AE89] mb-1">
+                <div className="flex items-center gap-2 text-xs font-sans text-[#D0AE89] mb-1">
                   <span>Attempt {activeGenerationIndex + 1} of 2</span>
                   <span>•</span>
                   <span>{currentGen.roomType}</span>
@@ -555,7 +555,7 @@ export default function RoomRedesign() {
                     className="w-full sm:w-auto justify-center px-4 py-2.5 rounded-sm border border-[#D0AE89]/40 text-[#D0AE89] hover:bg-[#D0AE89]/10 text-xs font-medium uppercase tracking-wider transition-all flex items-center gap-1.5"
                   >
                     <RefreshCw className="w-3.5 h-3.5" />
-                    <span>Try Another Style (1 left)</span>
+                    <span>Try another style (1 left)</span>
                   </button>
                 )}
                 {generations.length === 2 && (
@@ -564,7 +564,7 @@ export default function RoomRedesign() {
                     className="w-full sm:w-auto justify-center px-4 py-2.5 rounded-sm border border-[#D0AE89] text-[#D0AE89] hover:bg-[#D0AE89] hover:text-[#192420] text-xs font-medium uppercase tracking-wider transition-all flex items-center gap-1.5"
                   >
                     <SlidersHorizontal className="w-3.5 h-3.5" />
-                    <span>Compare Both Designs</span>
+                    <span>Compare both designs</span>
                   </button>
                 )}
                 <button
@@ -572,7 +572,7 @@ export default function RoomRedesign() {
                   className="w-full sm:w-auto justify-center px-5 py-2.5 rounded-sm bg-[#D0AE89] hover:bg-[#c49e75] text-[#192420] text-xs font-medium uppercase tracking-wider transition-all flex items-center gap-1.5 shadow-md"
                 >
                   <MessageSquare className="w-3.5 h-3.5" />
-                  <span>Contact Us About This Design</span>
+                  <span>Contact us about this design</span>
                 </button>
               </div>
             </div>
@@ -604,9 +604,9 @@ export default function RoomRedesign() {
                     </div>
                   </div>
                 </div>
-                <div className="absolute top-3 left-3 z-20 px-2.5 py-1 bg-[#192420]/90 backdrop-blur-md border border-white/10 text-[10px] font-mono text-[#F5F0E8] uppercase pointer-events-none rounded-sm">Before</div>
-                <div className="absolute top-3 right-3 z-20 px-2.5 py-1 bg-[#192420]/90 backdrop-blur-md border border-[#D0AE89]/40 text-[10px] font-mono text-[#D0AE89] uppercase pointer-events-none rounded-sm">After</div>
-                <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-20 px-3 py-1 bg-[#192420]/90 backdrop-blur-md border border-white/10 text-[10px] font-mono text-[#cfc8bc] pointer-events-none rounded-sm">
+                <div className="absolute top-3 left-3 z-20 px-2.5 py-1 bg-[#192420]/90 backdrop-blur-md border border-white/10 text-[10px] font-sans text-[#F5F0E8] uppercase pointer-events-none rounded-sm">Before</div>
+                <div className="absolute top-3 right-3 z-20 px-2.5 py-1 bg-[#192420]/90 backdrop-blur-md border border-[#D0AE89]/40 text-[10px] font-sans text-[#D0AE89] uppercase pointer-events-none rounded-sm">After</div>
+                <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-20 px-3 py-1 bg-[#192420]/90 backdrop-blur-md border border-white/10 text-[10px] font-sans text-[#cfc8bc] pointer-events-none rounded-sm">
                   {Math.round(sliderPos)}% • Drag to compare
                 </div>
               </div>
@@ -641,7 +641,7 @@ export default function RoomRedesign() {
                         </div>
                       )}
                     </div>
-                    <div className="flex items-center justify-between text-xs font-mono text-[#cfc8bc]/70 mb-1">
+                    <div className="flex items-center justify-between text-xs font-sans text-[#cfc8bc]/70 mb-1">
                       <span className="text-[#D0AE89]">Design 0{idx + 1}</span>
                       <span>{gen.roomType}</span>
                     </div>
@@ -650,7 +650,7 @@ export default function RoomRedesign() {
                   <div className="pt-4 border-t border-[#D0AE89]/10 mt-4 flex items-center justify-between">
                     <button
                       onClick={(e) => { e.stopPropagation(); setActiveGenerationIndex(idx); setViewState('result'); }}
-                      className="text-xs font-mono text-[#cfc8bc] hover:text-[#D0AE89] flex items-center gap-1"
+                      className="text-xs font-sans text-[#cfc8bc] hover:text-[#D0AE89] flex items-center gap-1"
                     >
                       <Eye className="w-3.5 h-3.5" />
                       <span>View slider</span>
@@ -691,7 +691,7 @@ export default function RoomRedesign() {
                   <div className="mb-6 p-3.5 rounded-sm bg-[#141e1a] border border-[#D0AE89]/20 flex items-center gap-3 sm:gap-4">
                     <img src={generations[preferredDesignIndex].image} alt="Selected design" className="w-16 sm:w-20 h-12 sm:h-14 object-cover rounded-sm border border-[#D0AE89]/30 flex-shrink-0" />
                     <div className="overflow-hidden">
-                      <span className="text-[10px] font-mono text-[#D0AE89] uppercase block">Attached design</span>
+                      <span className="text-[10px] font-sans text-[#D0AE89] uppercase block">Attached design</span>
                       <div className="text-xs text-[#F5F0E8] font-medium truncate">
                         {generations[preferredDesignIndex].roomType} — {generations[preferredDesignIndex].style}
                       </div>
@@ -702,7 +702,7 @@ export default function RoomRedesign() {
                 <form onSubmit={handleContactSubmit} className="space-y-4">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="text-[10px] font-mono tracking-widest text-[#D0AE89] uppercase block mb-1.5">Your Name</label>
+                      <label className="text-[10px] font-sans tracking-widest text-[#D0AE89] uppercase block mb-1.5">Your Name</label>
                       <input
                         type="text"
                         required
@@ -712,7 +712,7 @@ export default function RoomRedesign() {
                       />
                     </div>
                     <div>
-                      <label className="text-[10px] font-mono tracking-widest text-[#D0AE89] uppercase block mb-1.5">Phone Number</label>
+                      <label className="text-[10px] font-sans tracking-widest text-[#D0AE89] uppercase block mb-1.5">Phone Number</label>
                       <input
                         type="tel"
                         required
@@ -724,7 +724,7 @@ export default function RoomRedesign() {
                   </div>
 
                   <div>
-                    <label className="text-[10px] font-mono tracking-widest text-[#D0AE89] uppercase block mb-1.5">Message</label>
+                    <label className="text-[10px] font-sans tracking-widest text-[#D0AE89] uppercase block mb-1.5">Message</label>
                     <textarea
                       rows={3}
                       required
@@ -735,7 +735,7 @@ export default function RoomRedesign() {
                   </div>
 
                   <div className="pt-4 flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-between gap-3">
-                    <button type="button" onClick={() => setViewState(generations.length >= 2 ? 'compare' : 'result')} className="text-xs font-mono text-[#cfc8bc] hover:text-[#F5F0E8] py-2 text-center">
+                    <button type="button" onClick={() => setViewState(generations.length >= 2 ? 'compare' : 'result')} className="text-xs font-sans text-[#cfc8bc] hover:text-[#F5F0E8] py-2 text-center">
                       ← Back
                     </button>
                     <button type="submit" className="w-full sm:w-auto px-6 py-3.5 rounded-sm bg-[#D0AE89] hover:bg-[#c49e75] text-[#192420] text-xs font-medium uppercase tracking-[0.18em] transition-all shadow-lg flex items-center justify-center gap-2">
@@ -771,7 +771,7 @@ export default function RoomRedesign() {
             <div className="w-12 h-12 rounded-full bg-[#D0AE89]/10 border border-[#D0AE89]/30 flex items-center justify-center mx-auto mb-4 text-[#D0AE89]">
               <Sparkles className="w-5 h-5" />
             </div>
-            <span className="text-[10px] font-mono text-[#D0AE89] uppercase tracking-widest block mb-2">2 of 2 free designs used</span>
+            <span className="text-[10px] font-sans text-[#D0AE89] uppercase tracking-widest block mb-2">2 of 2 free designs used</span>
             <h3 className="text-2xl sm:text-3xl text-[#F5F0E8] font-light tracking-wide mb-3">Ready to bring your vision to life?</h3>
             <p className="text-xs sm:text-sm text-[#cfc8bc]/80 font-light leading-relaxed mb-6">
               You've used both free redesigns. Talk to our team to take the next step.

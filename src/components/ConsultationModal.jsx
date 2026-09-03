@@ -21,12 +21,12 @@ export default function ConsultationModal({ isOpen, onClose }) {
   if (!isOpen) return null;
 
   const elementOptions = [
-    'Bespoke Teak Millwork & Joinery',
-    'Hand-Troweled Cut-Cement Plaster',
-    'Circadian Nocturnal Lighting Coves',
-    'Acoustic Stillness Engineering',
-    'Private Frangipani Courtyard Pool',
-    'Single-Block Stone Bathtub & Spa'
+    'Custom Teak Cabinets & Furniture',
+    'Cool Cut-Cement Wall Plaster',
+    'Warm Cove Lighting & Dimming',
+    'Quiet Sound Insulation',
+    'Courtyard Garden & Greenery',
+    'Natural Stone Bathroom & Vanity'
   ];
 
   const toggleElement = (item) => {
@@ -68,8 +68,8 @@ export default function ConsultationModal({ isOpen, onClose }) {
 
         {!isSubmitted ? (
           <div>
-            <div className="mb-6 sm:mb-8 pr-8">
-              <div className="flex items-center gap-2 mb-3 sm:mb-4">
+            <div className="mb-5 sm:mb-8 pr-8">
+              <div className="flex items-center gap-2 mb-2 sm:mb-3">
                 <img 
                   src="/images/brand/arcube-emblem.png" 
                   alt="Arcube" 
@@ -79,15 +79,15 @@ export default function ConsultationModal({ isOpen, onClose }) {
                   arcube
                 </span>
               </div>
-              <div className="flex items-center gap-2 text-[10px] sm:text-xs font-mono text-[#D0AE89] tracking-widest uppercase mb-1.5">
+              <div className="flex items-center gap-2 text-[10px] sm:text-xs font-sans text-[#D0AE89] tracking-wider uppercase mb-1">
                 <Sparkles className="w-3.5 h-3.5" />
-                <span>Your Enquiry // Step {step} of 3</span>
+                <span>Consultation // Step {step} of 3</span>
               </div>
               <h2 className="text-xl sm:text-2xl lg:text-3xl text-[#F5F0E8] font-light tracking-wide">
-                Book a Consultation
+                Book a design consultation
               </h2>
               {/* Step indicator bar */}
-              <div className="w-full h-1 bg-[#192420] rounded-full mt-3 sm:mt-4 overflow-hidden">
+              <div className="w-full h-1 bg-[#192420] rounded-full mt-3 overflow-hidden">
                 <div
                   className="h-full bg-[#D0AE89] transition-all duration-500"
                   style={{ width: `${(step / 3) * 100}%` }}
@@ -96,67 +96,67 @@ export default function ConsultationModal({ isOpen, onClose }) {
             </div>
 
             <form onSubmit={handleSubmit}>
-              {/* STEP 1: Spatial Parameters */}
+              {/* STEP 1: Property Info */}
               {step === 1 && (
-                <div className="space-y-4 sm:space-y-6">
+                <div className="space-y-4 sm:space-y-5">
                   <div>
-                    <label className="text-[10px] sm:text-xs font-mono tracking-widest text-[#D0AE89] uppercase block mb-1.5">
-                      Property Type
+                    <label className="text-xs font-sans tracking-wide text-[#D0AE89] uppercase block mb-1.5 font-medium">
+                      Property type
                     </label>
                     <select
                       value={formData.typology}
                       onChange={(e) => setFormData({ ...formData, typology: e.target.value })}
-                      className="w-full p-3 rounded-sm bg-[#192420] border border-[#D0AE89]/20 text-sm sm:text-xs text-[#F5F0E8] font-light focus:border-[#D0AE89] focus:outline-none"
+                      className="w-full p-3 rounded-sm bg-[#192420] border border-[#D0AE89]/20 text-xs sm:text-sm text-[#F5F0E8] font-light focus:border-[#D0AE89] focus:outline-none"
                     >
-                      <option>Penthouse (Colombo)</option>
-                      <option>Coastal Villa or Estate (Galle / Talpe)</option>
-                      <option>Private Residence (Colombo 07)</option>
-                      <option>Hill Country Home (Kandy / Nuwara Eliya)</option>
-                      <option>Commercial or Resort Project</option>
+                      <option>Apartment or Penthouse</option>
+                      <option>Family House (Colombo)</option>
+                      <option>Coastal Villa or Holiday Home</option>
+                      <option>Country Home (Kandy / Nuwara Eliya)</option>
+                      <option>Office, Cafe, or Boutique Hotel</option>
                     </select>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                     <div>
-                      <label className="text-[10px] sm:text-xs font-mono tracking-widest text-[#D0AE89] uppercase block mb-1.5">
-                        Project Location / Area
+                      <label className="text-xs font-sans tracking-wide text-[#D0AE89] uppercase block mb-1.5 font-medium">
+                        Location / City
                       </label>
                       <input
                         type="text"
                         required
-                        placeholder="e.g. Colombo 07, Galle Face, or Talpe"
+                        placeholder="e.g. Colombo 07, Colombo 03, Galle"
                         value={formData.location}
                         onChange={(e) => setFormData({ ...formData, location: e.target.value })}
-                        className="w-full p-3 rounded-sm bg-[#192420] border border-[#D0AE89]/20 text-sm sm:text-xs text-[#F5F0E8] placeholder-[#cfc8bc]/40 focus:border-[#D0AE89] focus:outline-none"
+                        className="w-full p-3 rounded-sm bg-[#192420] border border-[#D0AE89]/20 text-xs sm:text-sm text-[#F5F0E8] placeholder-[#cfc8bc]/40 focus:border-[#D0AE89] focus:outline-none"
                       />
                     </div>
                     <div>
-                      <label className="text-[10px] sm:text-xs font-mono tracking-widest text-[#D0AE89] uppercase block mb-1.5">
-                        Approximate Floor Area
+                      <label className="text-xs font-sans tracking-wide text-[#D0AE89] uppercase block mb-1.5 font-medium">
+                        Approximate size (sq ft)
                       </label>
                       <input
                         type="text"
-                        placeholder="e.g. 4,500 sq.ft"
+                        placeholder="e.g. 2,500 sq ft (optional)"
                         value={formData.sqft}
                         onChange={(e) => setFormData({ ...formData, sqft: e.target.value })}
-                        className="w-full p-3 rounded-sm bg-[#192420] border border-[#D0AE89]/20 text-sm sm:text-xs text-[#F5F0E8] placeholder-[#cfc8bc]/40 focus:border-[#D0AE89] focus:outline-none"
+                        className="w-full p-3 rounded-sm bg-[#192420] border border-[#D0AE89]/20 text-xs sm:text-sm text-[#F5F0E8] placeholder-[#cfc8bc]/40 focus:border-[#D0AE89] focus:outline-none"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label className="text-[10px] sm:text-xs font-mono tracking-widest text-[#D0AE89] uppercase block mb-1.5">
-                      Target Construction / Delivery Horizon
+                    <label className="text-xs font-sans tracking-wide text-[#D0AE89] uppercase block mb-1.5 font-medium">
+                      When would you like to start?
                     </label>
                     <select
                       value={formData.timeline}
                       onChange={(e) => setFormData({ ...formData, timeline: e.target.value })}
-                      className="w-full p-3 rounded-sm bg-[#192420] border border-[#D0AE89]/20 text-sm sm:text-xs text-[#F5F0E8] font-light focus:border-[#D0AE89] focus:outline-none"
+                      className="w-full p-3 rounded-sm bg-[#192420] border border-[#D0AE89]/20 text-xs sm:text-sm text-[#F5F0E8] font-light focus:border-[#D0AE89] focus:outline-none"
                     >
-                      <option>Immediate (Ready for architectural schematic)</option>
-                      <option>Within 6 Months</option>
-                      <option>6 – 12 Months</option>
-                      <option>Exploratory Feasibility for Future Land Acquisition</option>
+                      <option>As soon as possible</option>
+                      <option>Within 1 – 3 months</option>
+                      <option>In 3 – 6 months</option>
+                      <option>Just exploring ideas for now</option>
                     </select>
                   </div>
                 </div>
@@ -166,7 +166,7 @@ export default function ConsultationModal({ isOpen, onClose }) {
               {step === 2 && (
                 <div className="space-y-4 sm:space-y-6">
                   <div>
-                    <label className="text-[10px] sm:text-xs font-mono tracking-widest text-[#D0AE89] uppercase block mb-2 sm:mb-3">
+                    <label className="text-[10px] sm:text-xs font-sans tracking-widest text-[#D0AE89] uppercase block mb-2 sm:mb-3">
                       Select Desired Design Elements
                     </label>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-2.5">
@@ -192,29 +192,29 @@ export default function ConsultationModal({ isOpen, onClose }) {
 
                   {/* Document Upload Simulation */}
                   <div>
-                    <label className="text-[10px] sm:text-xs font-mono tracking-widest text-[#D0AE89] uppercase block mb-1.5">
-                      Architectural Floorplans / Site Survey (Optional)
+                    <label className="text-xs font-sans tracking-wide text-[#D0AE89] uppercase block mb-1.5 font-medium">
+                      Floorplans or photos (optional)
                     </label>
-                    <label className="border border-dashed border-[#D0AE89]/30 hover:border-[#D0AE89] rounded-sm p-5 sm:p-6 flex flex-col items-center justify-center cursor-pointer bg-[#192420]/40 hover:bg-[#192420] transition-colors">
+                    <label className="border border-dashed border-[#D0AE89]/30 hover:border-[#D0AE89] rounded-sm p-4 sm:p-5 flex flex-col items-center justify-center cursor-pointer bg-[#192420]/40 hover:bg-[#192420] transition-colors">
                       <Upload className="w-5 h-5 text-[#D0AE89] mb-1.5" />
-                      <span className="text-xs text-[#F5F0E8]/90 text-center">
-                        Click or drag architectural DWG, PDF or plans
+                      <span className="text-xs text-[#F5F0E8]/90 text-center font-sans">
+                        Click or drag your floorplans or room photos here
                       </span>
-                      <span className="text-[10px] font-mono text-[#cfc8bc]/50 mt-1">
-                        Encrypted & strictly confidential
+                      <span className="text-[11px] font-sans text-[#cfc8bc]/50 mt-1">
+                        Accepts JPG, PNG, PDF
                       </span>
                     </label>
                   </div>
                 </div>
               )}
 
-              {/* STEP 3: Contact & Atelier Dispatch */}
+              {/* STEP 3: Contact Details */}
               {step === 3 && (
-                <div className="space-y-4 sm:space-y-6">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="space-y-4 sm:space-y-5">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                     <div>
-                      <label className="text-[10px] sm:text-xs font-mono tracking-widest text-[#D0AE89] uppercase block mb-1.5">
-                        Your Full Name
+                      <label className="text-xs font-sans tracking-wide text-[#D0AE89] uppercase block mb-1.5 font-medium">
+                        Your full name
                       </label>
                       <input
                         type="text"
@@ -222,28 +222,28 @@ export default function ConsultationModal({ isOpen, onClose }) {
                         placeholder="e.g. Shanil Perera"
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        className="w-full p-3 rounded-sm bg-[#192420] border border-[#D0AE89]/20 text-sm sm:text-xs text-[#F5F0E8] focus:border-[#D0AE89] focus:outline-none"
+                        className="w-full p-3 rounded-sm bg-[#192420] border border-[#D0AE89]/20 text-xs sm:text-sm text-[#F5F0E8] focus:border-[#D0AE89] focus:outline-none"
                       />
                     </div>
                     <div>
-                      <label className="text-[10px] sm:text-xs font-mono tracking-widest text-[#D0AE89] uppercase block mb-1.5">
-                        Email Address
+                      <label className="text-xs font-sans tracking-wide text-[#D0AE89] uppercase block mb-1.5 font-medium">
+                        Email address
                       </label>
                       <input
                         type="email"
                         required
-                        placeholder="s.perera@residence.lk"
+                        placeholder="s.perera@gmail.com"
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="w-full p-3 rounded-sm bg-[#192420] border border-[#D0AE89]/20 text-sm sm:text-xs text-[#F5F0E8] focus:border-[#D0AE89] focus:outline-none"
+                        className="w-full p-3 rounded-sm bg-[#192420] border border-[#D0AE89]/20 text-xs sm:text-sm text-[#F5F0E8] focus:border-[#D0AE89] focus:outline-none"
                       />
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                     <div>
-                      <label className="text-[10px] sm:text-xs font-mono tracking-widest text-[#D0AE89] uppercase block mb-1.5">
-                        Direct Phone / WhatsApp
+                      <label className="text-xs font-sans tracking-wide text-[#D0AE89] uppercase block mb-1.5 font-medium">
+                        Phone / WhatsApp
                       </label>
                       <input
                         type="tel"
@@ -251,41 +251,41 @@ export default function ConsultationModal({ isOpen, onClose }) {
                         placeholder="+94 77 000 0000"
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        className="w-full p-3 rounded-sm bg-[#192420] border border-[#D0AE89]/20 text-sm sm:text-xs text-[#F5F0E8] focus:border-[#D0AE89] focus:outline-none"
+                        className="w-full p-3 rounded-sm bg-[#192420] border border-[#D0AE89]/20 text-xs sm:text-sm text-[#F5F0E8] focus:border-[#D0AE89] focus:outline-none"
                       />
                     </div>
                     <div>
-                      <label className="text-[10px] sm:text-xs font-mono tracking-widest text-[#D0AE89] uppercase block mb-1.5">
-                        Meeting Location
+                      <label className="text-xs font-sans tracking-wide text-[#D0AE89] uppercase block mb-1.5 font-medium">
+                        Preferred meeting type
                       </label>
                       <select
                         value={formData.atelier}
                         onChange={(e) => setFormData({ ...formData, atelier: e.target.value })}
-                        className="w-full p-3 rounded-sm bg-[#192420] border border-[#D0AE89]/20 text-sm sm:text-xs text-[#F5F0E8] font-light focus:border-[#D0AE89] focus:outline-none"
+                        className="w-full p-3 rounded-sm bg-[#192420] border border-[#D0AE89]/20 text-xs sm:text-sm text-[#F5F0E8] font-light focus:border-[#D0AE89] focus:outline-none"
                       >
-                        <option>Colombo 07 (Barnes Place)</option>
-                        <option>Visit on Site</option>
-                        <option>Video Call</option>
+                        <option>At our Colombo 06 studio</option>
+                        <option>On site at your property</option>
+                        <option>Video call (Google Meet / Zoom)</option>
                       </select>
                     </div>
                   </div>
 
                   <div>
-                    <label className="text-[10px] sm:text-xs font-mono tracking-widest text-[#D0AE89] uppercase block mb-1.5">
-                      Additional Notes
+                    <label className="text-xs font-sans tracking-wide text-[#D0AE89] uppercase block mb-1.5 font-medium">
+                      Tell us about your project (optional)
                     </label>
                     <textarea
                       rows={3}
-                      placeholder="Special considerations, coastal wind exposure, heritage preservation..."
+                      placeholder="What rooms would you like to design? Any specific ideas or deadlines?"
                       value={formData.notes}
                       onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
-                      className="w-full p-3 rounded-sm bg-[#192420] border border-[#D0AE89]/20 text-sm sm:text-xs text-[#F5F0E8] placeholder-[#cfc8bc]/40 focus:border-[#D0AE89] focus:outline-none"
+                      className="w-full p-3 rounded-sm bg-[#192420] border border-[#D0AE89]/20 text-xs sm:text-sm text-[#F5F0E8] placeholder-[#cfc8bc]/40 focus:border-[#D0AE89] focus:outline-none"
                     ></textarea>
                   </div>
 
                   <div className="p-3 sm:p-4 rounded-sm bg-[#192420]/80 border border-[#D0AE89]/10 flex items-center gap-3">
                     <ShieldCheck className="w-4 h-4 text-[#D0AE89] flex-shrink-0" />
-                    <span className="text-[10px] sm:text-[11px] font-mono text-[#cfc8bc]/70">
+                    <span className="text-[10px] sm:text-[11px] font-sans text-[#cfc8bc]/70">
                       Your information is confidential and will not be shared.
                     </span>
                   </div>
@@ -298,7 +298,7 @@ export default function ConsultationModal({ isOpen, onClose }) {
                   <button
                     type="button"
                     onClick={() => setStep(step - 1)}
-                    className="px-4 py-2.5 rounded-sm text-xs font-mono uppercase tracking-wider text-[#cfc8bc] hover:text-[#F5F0E8] flex items-center gap-1.5"
+                    className="px-4 py-2.5 rounded-sm text-xs font-sans uppercase tracking-wider text-[#cfc8bc] hover:text-[#F5F0E8] flex items-center gap-1.5"
                   >
                     <ArrowLeft className="w-3.5 h-3.5" />
                     <span>Back</span>
@@ -335,7 +335,7 @@ export default function ConsultationModal({ isOpen, onClose }) {
               <CheckCircle2 className="w-7 h-7 sm:w-8 sm:h-8 text-[#D0AE89]" />
             </div>
 
-            <span className="text-[10px] sm:text-xs font-mono text-[#D0AE89] tracking-widest uppercase block mb-2">
+            <span className="text-[10px] sm:text-xs font-sans text-[#D0AE89] tracking-widest uppercase block mb-2">
               Enquiry Received // Ref #ARC-LK-2026
             </span>
 

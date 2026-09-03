@@ -52,11 +52,11 @@ export default {
         }
       },
       fontFamily: {
-        sans: ["'Jost'", "'Poppins'", "'Century Gothic'", "sans-serif"],
-        display: ["'Jost'", "'Poppins'", "'Century Gothic'", "sans-serif"],
-        serif: ["'Jost'", "'Poppins'", "'Century Gothic'", "sans-serif"],
-        cinzel: ["'Jost'", "'Poppins'", "'Century Gothic'", "sans-serif"],
-        mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
+        sans: ["'Poppins'", "sans-serif"],
+        display: ["'Jost'", "sans-serif"],
+        serif: ["'Jost'", "sans-serif"],
+        cinzel: ["'Jost'", "sans-serif"],
+        mono: ["'Poppins'", "sans-serif"],
       },
       letterSpacing: {
         widest: '.2em',

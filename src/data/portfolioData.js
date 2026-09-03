@@ -2,13 +2,14 @@ export const portfolioProjects = [
   {
     id: 'lotus-sky-residence',
     title: 'The Lotus Sky Residence',
-    category: 'Sky Penthouse',
+    category: 'Apartment',
+    status: 'Completed project',
     location: 'Sir James Peiris Mawatha, Beira Lake, Colombo 02',
     year: '2025',
     area: '7,800 sq.ft',
     image: '/images/colombo-lotus-hero.jpg',
     tagline: 'Sunken Roman travertine hearth framing the illuminated Colombo Lotus Tower.',
-    excerpt: 'Perched high above Beira Lake along Sir James Peiris Mawatha, framing an unobstructed panoramic vista of Nelum Kuluna (Colombo Lotus Tower) across the water.',
+    excerpt: 'High above Beira Lake in Colombo 02, framing direct views of the Lotus Tower with warm teak wood and natural stone.',
     materials: ['Roman Silver Travertine', 'Fluted Ceylon Teak', 'Champagne Brass', 'Ivory Bouclé'],
     description: `Situated along Sir James Peiris Mawatha with direct panoramic vistas over Beira Lake, The Lotus Sky Residence is Arcube’s flagship high-rise commission in Colombo.
     
@@ -28,13 +29,14 @@ Through custom acoustic floor-to-ceiling curtain glazing, the main living pavili
   {
     id: 'cinnamon-gardens-pavilion',
     title: 'The Barnes Place Pavilion',
-    category: 'Private Residence',
+    category: 'House',
+    status: 'Completed project',
     location: 'Barnes Place, Cinnamon Gardens, Colombo 07',
     year: '2024',
     area: '6,400 sq.ft',
     image: '/images/sl-minimal-living.jpg',
     tagline: 'Cut-cement tranquility anchored by a blossoming temple tree courtyard and reflection pool.',
-    excerpt: 'Located on prestigious Barnes Place in Colombo 07, celebrating raw polished cut-cement plaster, aged Ceylon teak cane furniture, and a tranquil frangipani reflection pool.',
+    excerpt: 'A quiet family home in Colombo 07 featuring cool cement walls, handmade teak furniture, and a tranquil courtyard pool.',
     materials: ['Polished Cut-Cement Plaster', 'Aged Ceylon Teak & Woven Cane', 'Natural Belgian Linen', 'Miriswatta River Stones'],
     description: `Hidden behind tall discreet boundary walls on Barnes Place in Cinnamon Gardens, this residence draws direct inspiration from Sri Lanka’s tropical modernist heritage.
     
@@ -54,13 +56,14 @@ The primary living room opens completely through minimalist black steel-framed s
   {
     id: 'lunuganga-veranda',
     title: 'The Lunuganga Veranda',
-    category: 'Estate Pavilion',
+    category: 'Villa',
+    status: 'Completed project',
     location: 'Dedduwa Lake, Bentota, Southern Province',
     year: '2024',
     area: '9,200 sq.ft',
     image: '/images/sl-bawa-dining.jpg',
     tagline: 'Open-air veranda with Sinhala clay tile roof overlooking coconut groves.',
-    excerpt: 'An open-air dining pavilion in Bentota featuring traditional Sinhala clay tiles (Sinhala Ulu), monolithic Ceylon Jackwood dining table, and Geoffrey Bawa cane seating.',
+    excerpt: 'An open-air dining space in Bentota with traditional clay tiles, a solid Jackwood dining table, and handmade cane chairs.',
     materials: ['Sinhala Clay Roof Tiles', 'Solid Ceylon Jackwood', 'Polished Cut-Cement', 'Artisanal Cane Webbing'],
     description: `Commissioned on a secluded estate overlooking Dedduwa Lake in Bentota, this open-air dining veranda pays homage to the architectural language of Geoffrey Bawa.
     
@@ -80,13 +83,14 @@ Under an authentic terracotta Sinhala clay tile roof supported by raw timber pos
   {
     id: 'port-city-transformation',
     title: 'The Port City Sky Sanctuary',
-    category: 'Sky Penthouse',
+    category: 'Apartment',
+    status: 'Concept design',
     location: 'Marina Promenade, Colombo Port City (CIFC)',
     year: '2024',
     area: '6,800 sq.ft',
     image: '/images/after-luxury.jpg',
     tagline: 'Total transformation of a raw high-rise concrete shell into pure luxury.',
-    excerpt: 'Located in the newly developed Colombo Port City marina district, transforming a cold industrial concrete shell into a warm timber and limestone sanctuary.',
+    excerpt: 'A complete transformation of a bare concrete apartment into a warm, comfortable home with teak walls and soft lighting.',
     materials: ['Fluted Ceylon Teak', 'Honed Limestone Slabs', 'Custom Bouclé', 'Patinated Bronze'],
     description: `Taking over an unfinished raw concrete shell on the upper floor of a luxury high-rise overlooking Colombo Port City and the harbor, Arcube orchestrated a comprehensive spatial metamorphosis.
     
@@ -106,13 +110,14 @@ Linear acoustic fluted teak paneling, concealed indirect lighting coves, and mon
   {
     id: 'frangipani-courtyard',
     title: 'The Temple Tree Courtyard',
-    category: 'Private Residence',
+    category: 'House',
+    status: 'Completed project',
     location: 'Ward Place, Colombo 07',
     year: '2025',
     area: '5,600 sq.ft',
     image: '/images/sl-courtyard-pool.jpg',
     tagline: 'Water courtyard framed by raw cut-cement and white frangipani blossoms.',
-    excerpt: 'A central water sanctuary on Ward Place designed around a flowering white and yellow Araliya tree, granite reflecting pool, and shaded verandas.',
+    excerpt: 'A calm courtyard home on Ward Place designed around a flowering temple tree, shaded verandas, and cool stone.',
     materials: ['Granite Reflection Basin', 'Cut-Cement Rendering', 'Araliya (Frangipani) Canopy', 'Aged Kumbuk Coping'],
     description: `Nestled in the residential quietude of Ward Place in Colombo 07, this courtyard serves as the contemplative lung of the home.
     
@@ -132,13 +137,14 @@ Every primary room looks inward onto a freshwater reflecting pool lined with dar
   {
     id: 'teak-cane-salon',
     title: 'The Teak & Cane Salon',
-    category: 'Private Residence',
+    category: 'House',
+    status: 'Concept design',
     location: 'Flower Road, Colombo 07',
     year: '2025',
     area: '4,800 sq.ft',
     image: '/images/sl-teak-cane.jpg',
     tagline: 'Artisanal handwoven cane webbing paired with raw cut-cement walls.',
-    excerpt: 'A celebration of mid-century Sri Lankan artisanship on Flower Road, featuring custom Pierre Jeanneret and Bawa-inspired teak armchairs.',
+    excerpt: 'A comfortable living room on Flower Road with handmade teak cane chairs, cool cement walls, and natural daylight.',
     materials: ['Aged Ceylon Teak', 'Handwoven Natural Cane', 'Raw Mineral Plaster', 'Belgian Oatmeal Linen'],
     description: `Created for an art patron on Flower Road in Colombo 07, this salon honors the tactile crafts of Sri Lanka.
     

@@ -7,7 +7,12 @@ export default function Portfolio({ onOpenConsultation }) {
   const [selectedProject, setSelectedProject] = useState(null);
   const [activeModalImage, setActiveModalImage] = useState(0);
 
-  const categories = ['All', 'Sky Penthouse', 'Private Residence', 'Estate Pavilion'];
+  const categories = [
+    { id: 'All', label: 'All' },
+    { id: 'Apartment', label: 'Apartments' },
+    { id: 'House', label: 'Houses' },
+    { id: 'Villa', label: 'Villas' }
+  ];
 
   const filteredProjects = activeFilter === 'All'
     ? portfolioProjects
@@ -25,16 +30,16 @@ export default function Portfolio({ onOpenConsultation }) {
   };
 
   return (
-    <section id="works" className="py-16 sm:py-24 lg:py-28 bg-[#192420] relative border-t border-[#D0AE89]/15">
+    <section id="works" className="py-12 sm:py-20 lg:py-24 bg-[#192420] relative border-t border-[#D0AE89]/15">
       <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-10">
         {/* Section header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 sm:mb-16 pb-5 sm:pb-6 border-b border-[#D0AE89]/15 gap-4">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-14 pb-4 sm:pb-6 border-b border-[#D0AE89]/15 gap-3">
           <div>
-            <span className="text-[10px] font-mono text-[#D0AE89] tracking-[0.3em] uppercase block mb-1.5 sm:mb-2">
-              Selected Works
+            <span className="text-xs font-medium text-[#D0AE89] tracking-[0.15em] uppercase block mb-1.5 font-sans">
+              Our work
             </span>
-            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-light text-[#F5F0E8] tracking-wide">
-              Architectural <span className="font-extralight text-[#D0AE89] tracking-wider">Commissions</span>
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-light text-[#F5F0E8] font-display tracking-tight">
+              Recent home & apartment <span className="font-extralight text-[#D0AE89]">projects</span>
             </h2>
           </div>
 
@@ -42,15 +47,15 @@ export default function Portfolio({ onOpenConsultation }) {
           <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto pb-1 -mx-4 px-4 sm:mx-0 sm:px-0 sm:flex-wrap">
             {categories.map((cat) => (
               <button
-                key={cat}
-                onClick={() => setActiveFilter(cat)}
-                className={`whitespace-nowrap px-3 py-1.5 text-xs font-mono tracking-wider transition-all rounded-sm border ${
-                  activeFilter === cat
+                key={cat.id}
+                onClick={() => setActiveFilter(cat.id)}
+                className={`whitespace-nowrap px-3.5 py-1.5 text-xs font-sans tracking-wide transition-all rounded-sm border ${
+                  activeFilter === cat.id
                     ? 'border-[#D0AE89] text-[#192420] bg-[#D0AE89] font-medium'
                     : 'border-[#D0AE89]/20 text-[#cfc8bc]/70 hover:text-[#F5F0E8] hover:border-[#D0AE89]/50 bg-[#141e1a]/40'
                 }`}
               >
-                {cat}
+                {cat.label}
               </button>
             ))}
           </div>
@@ -74,9 +79,18 @@ export default function Portfolio({ onOpenConsultation }) {
                 />
                 <div className="absolute inset-0 bg-[#192420]/20 group-hover:bg-transparent transition-colors duration-500"></div>
 
-                {/* Minimalist Index & Category */}
-                <div className="absolute top-3 left-3 z-10 text-[9px] sm:text-[10px] font-mono tracking-widest text-[#F5F0E8] bg-[#192420]/90 backdrop-blur-md px-2 sm:px-2.5 py-1 border border-[#D0AE89]/20 uppercase rounded-sm">
-                  {project.category}
+                {/* Honest Status Badge & Category */}
+                <div className="absolute top-3 left-3 z-10 flex items-center gap-1.5">
+                  <span className="text-[10px] font-sans tracking-wider text-[#F5F0E8] bg-[#192420]/90 backdrop-blur-md px-2.5 py-1 border border-[#D0AE89]/20 rounded-sm">
+                    {project.category}
+                  </span>
+                  <span className={`text-[10px] font-sans tracking-wider px-2 py-1 rounded-sm backdrop-blur-md border ${
+                    project.status === 'Completed project'
+                      ? 'bg-emerald-950/80 border-emerald-500/30 text-emerald-300'
+                      : 'bg-amber-950/80 border-amber-500/30 text-amber-300'
+                  }`}>
+                    {project.status}
+                  </span>
                 </div>
 
                 {/* Arrow trigger on hover */}
@@ -87,21 +101,21 @@ export default function Portfolio({ onOpenConsultation }) {
 
               {/* Minimal Text Content */}
               <div>
-                <div className="flex items-center justify-between text-[10px] sm:text-[11px] font-mono text-[#cfc8bc]/60 mb-1">
-                  <span className="text-[#D0AE89] tracking-wider">0{idx + 1} // {project.year}</span>
+                <div className="flex items-center justify-between text-xs font-sans text-[#cfc8bc]/70 mb-1">
+                  <span className="text-[#D0AE89] font-display">0{idx + 1} // {project.year}</span>
                   <span>{project.area}</span>
                 </div>
 
-                <h3 className="text-lg sm:text-xl lg:text-2xl text-[#F5F0E8] font-light tracking-wide group-hover:text-[#D0AE89] transition-colors mb-1">
+                <h3 className="text-xl lg:text-2xl text-[#F5F0E8] font-display font-light tracking-wide group-hover:text-[#D0AE89] transition-colors mb-1">
                   {project.title}
                 </h3>
 
-                <div className="flex items-center gap-1.5 text-xs text-[#cfc8bc]/80 font-light mb-2">
-                  <MapPin className="w-3 h-3 text-[#D0AE89] flex-shrink-0" />
+                <div className="flex items-center gap-1.5 text-xs text-[#cfc8bc]/80 font-sans mb-2">
+                  <MapPin className="w-3.5 h-3.5 text-[#D0AE89] flex-shrink-0" />
                   <span className="truncate">{project.location}</span>
                 </div>
 
-                <p className="text-xs text-[#F5F0E8]/80 font-normal line-clamp-2 leading-relaxed">
+                <p className="text-xs sm:text-sm text-[#F5F0E8]/85 font-sans leading-relaxed line-clamp-2">
                   {project.excerpt}
                 </p>
               </div>
@@ -193,16 +207,16 @@ export default function Portfolio({ onOpenConsultation }) {
 
               {/* Technical Highlights */}
               <div className="bg-[#192420] p-4 sm:p-6 border border-[#D0AE89]/20 rounded-sm">
-                <h4 className="text-[11px] sm:text-xs font-mono tracking-widest text-[#D0AE89] uppercase mb-3 sm:mb-4">
-                  Engineering & Performance
+                <h4 className="text-xs tracking-[0.15em] text-[#D0AE89] uppercase mb-3 sm:mb-4 font-sans font-medium">
+                  Engineering & performance
                 </h4>
                 <div className="space-y-3 sm:space-y-4">
                   {selectedProject.highlights.map((item, idx) => (
                     <div key={idx} className="flex flex-col">
-                      <span className="text-[9px] sm:text-[10px] font-mono text-[#cfc8bc]/60 uppercase">
+                      <span className="text-[10px] text-[#cfc8bc]/60 uppercase font-sans">
                         {item.label}
                       </span>
-                      <span className="text-xs font-medium text-[#F5F0E8] mt-0.5">
+                      <span className="text-xs font-medium text-[#F5F0E8] mt-0.5 font-sans">
                         {item.value}
                       </span>
                     </div>
@@ -213,17 +227,17 @@ export default function Portfolio({ onOpenConsultation }) {
 
             {/* Modal Footer CTA */}
             <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 sm:gap-4">
-              <span className="text-[10px] sm:text-xs text-[#cfc8bc]/60 font-mono text-center sm:text-left">
-                Ref: ARCUBE-LK-{selectedProject.year}-{selectedProject.id.toUpperCase()}
+              <span className="text-xs text-[#cfc8bc]/60 font-sans text-center sm:text-left">
+                Arcube architectural commission // {selectedProject.location}
               </span>
               <button
                 onClick={() => {
                   closeProjectModal();
                   onOpenConsultation();
                 }}
-                className="w-full sm:w-auto px-6 py-3 bg-[#D0AE89] hover:bg-[#c49e75] text-[#192420] text-xs font-medium uppercase tracking-[0.18em] transition-all rounded-sm shadow-md text-center"
+                className="w-full sm:w-auto px-6 py-3 bg-[#D0AE89] hover:bg-[#c49e75] text-[#192420] text-xs font-medium tracking-[0.08em] transition-all rounded-sm shadow-md text-center font-sans"
               >
-                Inquire About a Similar Residence
+                Book a consultation for this project
               </button>
             </div>
           </div>

@@ -1,50 +1,24 @@
 import React from 'react';
-import { MapPin } from 'lucide-react';
 
-export default function StudioIntro({ onOpenConsultation }) {
+export default function StudioIntro() {
   return (
-    <section id="studio" className="py-7 sm:py-20 bg-[#141e1a] border-b border-[#D0AE89]/15 relative">
+    <section id="studio-intro" className="py-16 sm:py-24 lg:py-28 bg-[#141e1a] border-b border-[#D0AE89]/15">
       <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-10">
-        
-        {/* Eyebrow */}
-        <div className="flex items-center justify-between pb-3 sm:pb-6 border-b border-[#D0AE89]/15">
-          <div className="flex items-center gap-2.5">
-            <span className="w-2 h-2 rounded-full bg-[#D0AE89] animate-pulse"></span>
-            <span className="text-xs tracking-[0.15em] uppercase text-[#D0AE89] font-medium font-sans">
-              What we do
-            </span>
-          </div>
 
-          <span className="text-xs text-[#cfc8bc]/60 font-sans">
-            Colombo 06 Atelier
-          </span>
-        </div>
+        <span className="text-sm font-medium text-[#D0AE89] tracking-[0.15em] uppercase block mb-10 sm:mb-14 pb-6 border-b border-[#D0AE89]/15 font-sans">
+          About us
+        </span>
 
-        {/* Philosophy Statement */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-12 pt-4 sm:pt-10 items-baseline">
-          <div className="lg:col-span-8">
-            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-light text-[#F5F0E8] leading-[1.2] font-display tracking-tight mb-3 sm:mb-5">
-              Calm, modern interiors built to stay cool.
-            </h2>
-            <p className="text-sm sm:text-base text-[#cfc8bc] font-normal leading-relaxed max-w-2xl font-sans">
-              Arcube is an interior design studio based in Colombo 06. We help you turn bare spaces into beautiful, functional homes designed for everyday living, comfort, and lasting quality.
-            </p>
-          </div>
-
-          <div className="lg:col-span-4 pt-1 lg:pt-0">
-            <div className="p-4 sm:p-5 rounded-sm bg-[#192420]/80 border border-[#D0AE89]/20">
-              <span className="text-xs uppercase tracking-wider text-[#D0AE89] block mb-1 font-medium font-sans">
-                Where we work
-              </span>
-              <p className="text-xs sm:text-sm text-[#F5F0E8] font-sans leading-relaxed mb-3">
-                Apartments, family homes, and holiday villas across Sri Lanka.
-              </p>
-              <div className="flex items-center gap-2 text-xs text-[#cfc8bc]/70 font-sans">
-                <MapPin className="w-3.5 h-3.5 text-[#D0AE89] flex-shrink-0" />
-                <span>16 Harmers Avenue, Colombo 06</span>
-              </div>
-            </div>
-          </div>
+        <div className="max-w-2xl">
+          <h2
+            className="text-4xl sm:text-5xl lg:text-6xl font-light text-[#F5F0E8] font-display tracking-[-0.01em] mb-8"
+            style={{ lineHeight: '1.45' }}
+          >
+            We design homes that feel good to live in.
+          </h2>
+          <p className="text-lg sm:text-xl text-[#cfc8bc] font-normal leading-relaxed font-sans">
+            Arcube is an interior design studio in Colombo. We work on homes, apartments, and villas — handling everything from layouts and materials to furniture and lighting.
+          </p>
         </div>
 
       </div>

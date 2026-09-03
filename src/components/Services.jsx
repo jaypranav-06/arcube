@@ -1,102 +1,70 @@
 import React from 'react';
-import { ArrowUpRight, Compass } from 'lucide-react';
 
 export default function Services({ onOpenConsultation }) {
   const services = [
     {
-      number: '01',
       title: 'Full home interior design',
-      description: 'We plan your room layout, furniture, and lighting so your home feels open, tidy, and comfortable for daily family life.',
-      deliverable: '3D room previews, floor plans, and lighting layouts.'
+      description: 'Complete room layouts, bespoke cabinetry drawings, lighting plans, and site supervision from concept through move-in day.'
     },
     {
-      number: '02',
       title: 'Custom furniture & cabinetry',
-      description: 'Built-in wardrobes, modern kitchens, dining tables, and TV consoles built to measure with quality materials and hardware.',
-      deliverable: 'Made-to-measure furniture built by master carpenters.'
+      description: 'Made-to-measure wardrobes, kitchen units, dining tables, and storage consoles built by master carpenters to fit your space.'
     },
     {
-      number: '03',
       title: 'Lighting & room comfort',
-      description: 'Soft, warm lighting and quiet room finishes that make your home peaceful, cozy, and relaxing in the evenings.',
-      deliverable: 'Warm lighting plan, dimmer setups, and soft furnishings.'
+      description: 'Thoughtful lighting layouts, dimmer controls, and quiet acoustic wall and ceiling finishes to make living spaces peaceful and restful.'
     },
     {
-      number: '04',
-      title: 'Home renovations & villa makeovers',
-      description: 'Refreshing older houses, apartments, and holiday villas with fresh layouts, clean finishes, and modern fittings.',
-      deliverable: 'Full renovation with daily site supervision.'
+      title: 'Renovations & villa makeovers',
+      description: 'Structural and interior updates for older houses, apartments, and holiday homes, managed on-site from demolition to final paint.'
     }
   ];
 
   return (
-    <section id="services" className="py-12 sm:py-20 lg:py-24 bg-[#141e1a] relative border-t border-[#D0AE89]/15">
+    <section id="services" className="bg-[#15201B] py-20 sm:py-28 lg:py-32 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-10">
-        {/* Section Header */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 mb-8 sm:mb-14 pb-6 sm:pb-10 border-b border-[#D0AE89]/15">
-          <div className="lg:col-span-5">
-            <span className="text-xs font-medium text-[#D0AE89] tracking-[0.15em] uppercase block mb-1.5 font-sans">
-              What we offer
+        <div className="max-w-[760px]">
+
+          {/* Section Header */}
+          <div className="mb-12 sm:mb-16 animate-fade-in">
+            <span className="text-sm font-sans text-[#B08D5B] mb-3 block">
+              What we do
             </span>
-            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-light text-[#F5F0E8] font-display tracking-tight leading-[1.18]">
-              Interior <br />
-              <span className="font-extralight text-[#D0AE89]">services</span>
+            <h2 className="text-4xl sm:text-5xl lg:text-[64px] font-serif font-normal text-[#EDE8E0] leading-[1.18]">
+              Our services
             </h2>
           </div>
 
-          <div className="lg:col-span-7 flex flex-col justify-end">
-            <p className="text-sm sm:text-base text-[#cfc8bc] font-sans leading-relaxed">
-              We handle everything from empty rooms to the day you move in. You work directly with our lead designer and our trusted team of carpenters and painters.
-            </p>
-          </div>
-        </div>
-
-        {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-8">
-          {services.map((srv) => (
-            <div
-              key={srv.number}
-              className="p-5 sm:p-7 rounded-sm bg-[#192420]/80 border border-[#D0AE89]/15 hover:border-[#D0AE89]/50 transition-all duration-300 flex flex-col justify-between group"
-            >
-              <div>
-                <div className="flex items-center justify-between mb-3 sm:mb-5">
-                  <span className="text-xs font-display text-[#D0AE89] tracking-wider">
-                    // {srv.number}
-                  </span>
-                  <ArrowUpRight className="w-4 h-4 text-[#cfc8bc]/40 group-hover:text-[#D0AE89] transition-colors" />
-                </div>
-
-                <h3 className="text-lg sm:text-xl lg:text-2xl text-[#F5F0E8] font-display font-light tracking-wide mb-2 group-hover:text-[#D0AE89] transition-colors">
-                  {srv.title}
+          {/* Plain Stacked List */}
+          <div className="border-b border-[#2A362F]">
+            {services.map((service) => (
+              <div
+                key={service.title}
+                className="border-t border-[#2A362F] py-10 sm:py-12 lg:py-14"
+              >
+                <h3 className="text-2xl sm:text-3xl font-serif text-[#EDE8E0] font-normal leading-snug hover:text-[#EDE8E0]/90 transition-colors">
+                  {service.title}
                 </h3>
-
-                <p className="text-xs sm:text-sm text-[#cfc8bc] font-sans leading-relaxed mb-4">
-                  {srv.description}
+                <p className="text-base sm:text-lg text-[#9CA69E] font-sans font-normal leading-relaxed mt-3 sm:mt-4">
+                  {service.description}
                 </p>
               </div>
+            ))}
+          </div>
 
-              <div className="pt-3.5 border-t border-[#D0AE89]/10">
-                <span className="text-xs font-sans text-[#D0AE89]/90 block">
-                  <span className="text-[#cfc8bc]/50 mr-1.5">What you get:</span>
-                  {srv.deliverable}
-                </span>
-              </div>
-            </div>
-          ))}
-        </div>
+          {/* Reassurance & CTA (inline on desktop, stacked on mobile) */}
+          <div className="pt-10 sm:pt-14 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
+            <p className="text-sm sm:text-base text-[#EDE8E0] font-sans font-normal leading-relaxed">
+              Not sure where to start? We'll walk you through it.
+            </p>
+            <button
+              onClick={onOpenConsultation}
+              className="self-start sm:self-auto px-6 py-3.5 rounded-sm bg-[#B08D5B] hover:bg-[#9c7b4d] text-[#15201B] text-sm font-sans font-medium transition-colors whitespace-nowrap active:scale-[0.99]"
+            >
+              Book a consultation
+            </button>
+          </div>
 
-        {/* Bottom CTA */}
-        <div className="mt-8 sm:mt-12 pt-6 border-t border-[#D0AE89]/15 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-xs sm:text-sm text-[#cfc8bc]/80 font-sans text-center sm:text-left">
-            Have a new home or renovation project in mind?
-          </p>
-          <button
-            onClick={onOpenConsultation}
-            className="w-full sm:w-auto px-5 sm:px-6 py-3 rounded-sm bg-[#D0AE89] hover:bg-[#c49e75] text-[#192420] text-xs font-medium tracking-[0.08em] transition-all flex items-center justify-center gap-2 shadow-sm active:scale-[0.99] font-sans"
-          >
-            <span>Book a consultation</span>
-            <Compass className="w-3.5 h-3.5" />
-          </button>
         </div>
       </div>
     </section>

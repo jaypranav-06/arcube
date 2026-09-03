@@ -32,18 +32,13 @@ export default function BeforeAfterSlider() {
     <section id="transformation" className="py-12 sm:py-20 bg-[#141e1a] border-t border-b border-[#D0AE89]/15">
       <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-10">
         {/* Minimal Header */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-6 sm:mb-10 pb-4 sm:pb-6 border-b border-[#D0AE89]/15 gap-3">
-          <div>
-            <span className="text-xs font-medium text-[#D0AE89] tracking-[0.15em] uppercase block mb-1.5 font-sans">
-              Before & after
-            </span>
-            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-light text-[#F5F0E8] font-display tracking-tight">
-              See the <span className="font-extralight text-[#D0AE89]">transformation</span>
-            </h2>
-          </div>
-          <p className="text-[#cfc8bc] text-xs sm:text-sm font-sans tracking-wide">
-            From bare concrete to a finished, comfortable home.
-          </p>
+        <div className="mb-6 sm:mb-10 pb-4 sm:pb-6 border-b border-[#D0AE89]/15">
+          <span className="text-sm font-medium text-[#D0AE89] tracking-[0.12em] uppercase block mb-2 font-sans">
+            Before & after
+          </span>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-[#F5F0E8] font-display tracking-tight">
+            See the transformation
+          </h2>
         </div>
 
         {/* Interactive Comparison Slider */}
@@ -92,17 +87,16 @@ export default function BeforeAfterSlider() {
             </div>
 
             {/* Floating Minimal Labels */}
-            <div className="absolute top-3 sm:top-4 left-3 sm:left-4 z-20 px-2.5 sm:px-3 py-1 bg-[#192420]/90 backdrop-blur-md border border-[#D0AE89]/20 text-xs font-sans tracking-wider text-[#F5F0E8] pointer-events-none rounded-sm">
+            <div className="absolute top-3 sm:top-4 left-3 sm:left-4 z-20 px-3 py-1.5 bg-[#192420]/90 backdrop-blur-md border border-[#D0AE89]/20 text-sm font-sans text-[#F5F0E8] pointer-events-none rounded-sm">
               Before
             </div>
 
-            <div className="absolute top-3 sm:top-4 right-3 sm:right-4 z-20 px-2.5 sm:px-3 py-1 bg-[#192420]/90 backdrop-blur-md border border-[#D0AE89]/30 text-xs font-sans tracking-wider text-[#D0AE89] pointer-events-none rounded-sm">
+            <div className="absolute top-3 sm:top-4 right-3 sm:right-4 z-20 px-3 py-1.5 bg-[#192420]/90 backdrop-blur-md border border-[#D0AE89]/30 text-sm font-sans text-[#D0AE89] pointer-events-none rounded-sm">
               After
             </div>
 
-            {/* Percentage indicator */}
-            <div className="absolute bottom-3 sm:bottom-4 left-1/2 -translate-x-1/2 z-20 px-3 py-1 bg-[#192420]/90 backdrop-blur-md border border-[#D0AE89]/20 text-xs font-sans text-[#cfc8bc] pointer-events-none rounded-sm whitespace-nowrap">
-              {Math.round(sliderPosition)}% • Drag to compare
+            <div className="absolute bottom-3 sm:bottom-4 left-1/2 -translate-x-1/2 z-20 px-3 py-1.5 bg-[#192420]/90 backdrop-blur-md border border-[#D0AE89]/20 text-sm font-sans text-[#cfc8bc] pointer-events-none rounded-sm whitespace-nowrap">
+              Drag to compare
             </div>
           </div>
         </div>

@@ -81,9 +81,8 @@ export default function Hero({ onOpenConsultation }) {
 
       {/* Main Content */}
       <div className="relative z-10 max-w-7xl w-full mx-auto px-4 sm:px-8 lg:px-10 flex flex-col justify-end">
-        {/* Top Bar on Mobile: Vista Stepper brought UP above the headline */}
+        {/* Top Bar on Mobile */}
         <div className="flex sm:hidden items-center justify-between pb-3 border-b border-[#D0AE89]/15 mb-4 text-xs font-sans">
-          {/* Current Slide Info with Pulse Dot & Tap to Cycle */}
           <button
             type="button"
             onClick={() => {
@@ -92,14 +91,9 @@ export default function Hero({ onOpenConsultation }) {
             className="flex items-center gap-2 py-0.5 text-left active:opacity-75 transition-opacity"
           >
             <span className="w-2 h-2 rounded-full bg-[#D0AE89] animate-pulse flex-shrink-0"></span>
-            <div>
-              <span className="text-[10px] text-[#D0AE89] block uppercase tracking-widest leading-none mb-0.5 font-sans">
-                Vista 0{activeSlide + 1} / 03
-              </span>
-              <span className="text-xs text-[#F5F0E8] font-light font-sans">
-                {current.location}
-              </span>
-            </div>
+            <span className="text-sm text-[#F5F0E8] font-light font-sans">
+              {current.location}
+            </span>
           </button>
 
           {/* Easy-to-tap Chevron Arrows */}
@@ -129,30 +123,24 @@ export default function Hero({ onOpenConsultation }) {
         </div>
 
         {/* Top Meta Line: Desktop */}
-        <div className="hidden sm:flex items-center justify-between pb-3.5 border-b border-[#D0AE89]/15 mb-8 text-xs font-sans text-[#cfc8bc]/80">
+        <div className="hidden sm:flex items-center justify-between pb-3.5 border-b border-[#D0AE89]/15 mb-8 text-sm font-sans text-[#cfc8bc]/80">
           <div className="flex items-center gap-3">
-            <span className="text-[#D0AE89] tracking-widest uppercase font-medium">
+            <span className="text-[#D0AE89] tracking-widest uppercase font-medium text-xs">
               ARCUBE
             </span>
             <span>•</span>
-            <span className="text-[#F5F0E8]">Interior Design Studio</span>
+            <span className="text-[#F5F0E8]">Interior Design Studio, Colombo</span>
           </div>
-          <div className="text-xs text-[#cfc8bc]/70">
-            Colombo 06
-          </div>
+          <span className="text-sm text-[#F5F0E8]/70">{current.location}</span>
         </div>
 
-        {/* Hero Headline & Tagline in simple, direct language */}
         <div className="max-w-2xl mb-6 sm:mb-10">
-          <span className="text-xs tracking-[0.15em] font-medium text-[#D0AE89] uppercase block mb-2 sm:mb-3 font-sans">
-            Interior design & custom furniture
-          </span>
-          <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-light text-[#F5F0E8] font-display tracking-tight leading-[1.12] mb-3 sm:mb-4">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light text-[#F5F0E8] font-display tracking-tight leading-[1.12] mb-4 sm:mb-5">
             Interiors designed <br />
             <span className="font-extralight text-[#D0AE89]">for real living.</span>
           </h1>
-          <p className="text-sm sm:text-base md:text-lg text-[#F5F0E8]/90 font-sans font-normal max-w-lg leading-relaxed">
-            We create calm, modern homes and apartments in Sri Lanka designed for comfort, warmth, and daily living.
+          <p className="text-base sm:text-lg text-[#F5F0E8]/90 font-sans font-normal max-w-lg leading-relaxed">
+            Calm, modern homes and apartments across Sri Lanka.
           </p>
         </div>
 
@@ -162,7 +150,7 @@ export default function Hero({ onOpenConsultation }) {
             {/* Primary Gold CTA */}
             <button
               onClick={onOpenConsultation}
-              className="flex-1 sm:flex-none justify-center px-5 sm:px-6 py-3 rounded-sm bg-[#D0AE89] hover:bg-[#c49e75] text-[#192420] text-xs font-medium tracking-[0.08em] transition-all shadow-[0_4px_20px_rgba(208,174,137,0.25)] flex items-center gap-2 group active:scale-[0.99] font-sans"
+              className="flex-1 sm:flex-none justify-center px-5 sm:px-6 py-3 rounded-sm bg-[#D0AE89] hover:bg-[#c49e75] text-[#192420] text-sm font-medium tracking-[0.06em] transition-all shadow-[0_4px_20px_rgba(208,174,137,0.25)] flex items-center gap-2 group active:scale-[0.99] font-sans"
             >
               <span>Book a consultation</span>
               <ArrowDownRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:translate-y-0.5" />
@@ -170,7 +158,7 @@ export default function Hero({ onOpenConsultation }) {
 
             <a
               href="#works"
-              className="px-4 sm:px-5 py-3 text-xs font-sans tracking-wide text-[#F5F0E8]/85 hover:text-[#D0AE89] transition-colors text-center"
+              className="px-4 sm:px-5 py-3 text-sm font-sans text-[#F5F0E8]/85 hover:text-[#D0AE89] transition-colors text-center"
             >
               See our work →
             </a>

@@ -54,7 +54,7 @@ export default {
       fontFamily: {
         sans: ["'Poppins'", "sans-serif"],
         display: ["'Jost'", "sans-serif"],
-        serif: ["'Jost'", "sans-serif"],
+        serif: ["'Fraunces'", "Georgia", "serif"],
         cinzel: ["'Jost'", "sans-serif"],
         mono: ["'Poppins'", "sans-serif"],
       },

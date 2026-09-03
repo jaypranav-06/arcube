@@ -4,11 +4,8 @@ import Hero from './components/Hero';
 import StudioIntro from './components/StudioIntro';
 import Portfolio from './components/Portfolio';
 import Services from './components/Services';
-import Process from './components/Process';
 import BeforeAfterSlider from './components/BeforeAfterSlider';
 import RoomRedesign from './components/RoomRedesign';
-import ClientWords from './components/ClientWords';
-import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
 import ConsultationModal from './components/ConsultationModal';
 
@@ -34,7 +31,7 @@ export default function App() {
         <Hero onOpenConsultation={handleOpenConsultation} />
 
         {/* 2. Studio Intro: Philosophy + Interior Atelier Focus */}
-        <StudioIntro onOpenConsultation={handleOpenConsultation} />
+        <StudioIntro />
 
         {/* 3. Selected Works: Curated high-impact architectural commissions */}
         <Portfolio onOpenConsultation={handleOpenConsultation} />
@@ -42,20 +39,12 @@ export default function App() {
         {/* 4. Services: 4 core architectural offerings with tangible deliverables */}
         <Services onOpenConsultation={handleOpenConsultation} />
 
-        {/* 5. Process: 4-step operational rigor from audit to turnkey handover */}
-        <Process onOpenConsultation={handleOpenConsultation} />
-
-        {/* 6. Structural Metamorphosis Slider: Before & After comparison */}
+        {/* 5. Structural Metamorphosis Slider: Before & After comparison */}
         <BeforeAfterSlider />
 
         {/* 7. AI Redesign Tool: Mid-funnel exploratory visualizer */}
         <RoomRedesign />
 
-        {/* 8. Client Words: Grounded, authentic feedback */}
-        <ClientWords />
-
-        {/* 10. Contact & Map: Direct telephone, WhatsApp, Colombo atelier location */}
-        <ContactSection onOpenConsultation={handleOpenConsultation} />
       </main>
 
       {/* 11. Expanded Studio Footer with sitemap, legal, and restated credentials */}

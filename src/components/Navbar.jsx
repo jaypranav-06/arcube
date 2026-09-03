@@ -46,7 +46,7 @@ export default function Navbar({ onOpenConsultation }) {
               <a
                 key={link.name}
                 href={link.href}
-                className="text-sm font-sans font-light text-[#F5F0E8]/75 hover:text-[#D0AE89] transition-colors relative py-1 group"
+                className="text-xl font-sans font-light text-[#F5F0E8]/75 hover:text-[#D0AE89] transition-colors relative py-1 group"
               >
                 {link.name}
                 <span className="absolute bottom-0 left-0 w-0 h-px bg-[#D0AE89] transition-all duration-300 group-hover:w-full"></span>

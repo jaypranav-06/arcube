@@ -19,7 +19,7 @@ export default function Footer({ onOpenConsultation }) {
           {/* Contact + Socials */}
           <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8 text-sm font-sans text-[#cfc8bc]/80">
             <a href="tel:+94112584090" className="hover:text-[#D0AE89] transition-colors">+94 11 258 4090</a>
-            <a href="mailto:atelier@arcubedesign.com" className="hover:text-[#D0AE89] transition-colors">atelier@arcubedesign.com</a>
+            <a href="mailto:hello@arcube.com" className="hover:text-[#D0AE89] transition-colors">hello@arcube.com</a>
             <div className="flex items-center gap-2">
               <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram"
                 className="w-7 h-7 rounded-sm bg-[#192420] border border-[#D0AE89]/20 flex items-center justify-center hover:text-[#D0AE89] hover:border-[#D0AE89] transition-all">
@@ -43,7 +43,7 @@ export default function Footer({ onOpenConsultation }) {
 
         {/* Bottom bar */}
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm font-sans text-[#cfc8bc]/40">
-          <span>© {new Date().getFullYear()} Arcube Atelier (Pvt) Ltd. · Colombo 06, Sri Lanka</span>
+          <span>© {new Date().getFullYear()} Arcube (Pvt) Ltd. · Colombo 06, Sri Lanka</span>
           <button onClick={scrollToTop} className="flex items-center gap-1.5 hover:text-[#D0AE89] transition-colors">
             <span>Back to top</span>
             <ArrowUp className="w-3.5 h-3.5" />

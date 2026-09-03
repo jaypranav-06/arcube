@@ -20,7 +20,9 @@ export default function BeforeAfterSlider() {
 
   const handleTouchMove = useCallback((e) => {
     if (!isDragging) return;
-    updateSliderPosition(e.touches[0].clientX);
+    if (e && e.touches && e.touches[0]) {
+      updateSliderPosition(e.touches[0].clientX);
+    }
   }, [isDragging, updateSliderPosition]);
 
   const handleStart = () => setIsDragging(true);

@@ -181,7 +181,9 @@ export default function RoomRedesign() {
 
   const handleSliderTouch = useCallback((e) => {
     if (!isDraggingSlider) return;
-    updateSliderPosition(e.touches[0].clientX);
+    if (e && e.touches && e.touches[0]) {
+      updateSliderPosition(e.touches[0].clientX);
+    }
   }, [isDraggingSlider, updateSliderPosition]);
 
   const handleContactSubmit = async (e) => {

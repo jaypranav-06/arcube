@@ -35,25 +35,29 @@ export default function Hero({ onOpenConsultation }) {
     }
   ];
 
-  const current = heroSlides[activeSlide];
+  const current = heroSlides[activeSlide] || heroSlides[0];
 
   const handleTouchStart = (e) => {
-    setTouchStartX(e.touches[0].clientX);
+    if (e && e.touches && e.touches[0]) {
+      setTouchStartX(e.touches[0].clientX);
+    }
   };
 
   const handleTouchEnd = (e) => {
     if (touchStartX === null) return;
-    const touchEndX = e.changedTouches[0].clientX;
-    const diff = touchStartX - touchEndX;
-    if (Math.abs(diff) > 40) {
-      if (diff > 0) {
-        // Swiped left -> next
-        setActiveSlide((prev) => (prev + 1) % heroSlides.length);
-      } else {
-        // Swiped right -> prev
-        setActiveSlide((prev) => (prev === 0 ? heroSlides.length - 1 : prev - 1));
+    if (e && e.changedTouches && e.changedTouches[0]) {
+      const touchEndX = e.changedTouches[0].clientX;
+      const diff = touchStartX - touchEndX;
+      if (Math.abs(diff) > 40) {
+        if (diff > 0) {
+          // Swiped left -> next
+          setActiveSlide((prev) => (prev + 1) % heroSlides.length);
+        } else {
+          // Swiped right -> prev
+          setActiveSlide((prev) => (prev === 0 ? heroSlides.length - 1 : prev - 1));
+        }
+        setShowEasterEgg(false);
       }
-      setShowEasterEgg(false);
     }
     setTouchStartX(null);
   };
@@ -62,7 +66,7 @@ export default function Hero({ onOpenConsultation }) {
     <section 
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
-      className="relative min-h-[100svh] sm:min-h-[92vh] flex items-end justify-between overflow-hidden pb-12 sm:pb-16 pt-24 sm:pt-28 bg-[#192420]"
+      className="relative min-h-[100svh] sm:min-h-[92vh] flex items-end justify-between overflow-hidden pb-5 sm:pb-16 pt-20 sm:pt-28 bg-[#192420] border-b border-[#D0AE89]/15"
     >
       {/* Background Architectural Canvas */}
       <div className="absolute inset-0 z-0">
@@ -112,9 +116,59 @@ export default function Hero({ onOpenConsultation }) {
 
       {/* Main Content */}
       <div className="relative z-10 max-w-7xl w-full mx-auto px-4 sm:px-8 lg:px-10 flex flex-col justify-end">
-        {/* Top Meta Line: Clean responsive flex on mobile */}
-        <div className="flex flex-col xs:flex-row xs:items-center justify-between pb-3.5 border-b border-[#D0AE89]/15 mb-5 sm:mb-8 text-xs font-sans text-[#cfc8bc]/80 gap-1.5 xs:gap-0">
-          <div className="flex items-center gap-2 sm:gap-3 flex-wrap">
+        {/* Top Bar on Mobile: Vista Stepper brought UP above the headline */}
+        <div className="flex sm:hidden items-center justify-between pb-3 border-b border-[#D0AE89]/15 mb-4 text-xs font-sans">
+          {/* Current Slide Info with Pulse Dot & Tap to Cycle */}
+          <button
+            type="button"
+            onClick={() => {
+              setActiveSlide((prev) => (prev + 1) % heroSlides.length);
+              setShowEasterEgg(false);
+            }}
+            className="flex items-center gap-2 py-0.5 text-left active:opacity-75 transition-opacity"
+          >
+            <span className="w-2 h-2 rounded-full bg-[#D0AE89] animate-pulse flex-shrink-0"></span>
+            <div>
+              <span className="text-[10px] text-[#D0AE89] block uppercase tracking-widest leading-none mb-0.5 font-sans">
+                Vista 0{activeSlide + 1} / 03
+              </span>
+              <span className="text-xs text-[#F5F0E8] font-light font-sans">
+                {current.location}
+              </span>
+            </div>
+          </button>
+
+          {/* Easy-to-tap Chevron Arrows */}
+          <div className="flex items-center bg-[#141e1a]/95 backdrop-blur-md border border-[#D0AE89]/30 rounded-sm shadow-md">
+            <button
+              type="button"
+              onClick={() => {
+                setActiveSlide((prev) => (prev === 0 ? heroSlides.length - 1 : prev - 1));
+                setShowEasterEgg(false);
+              }}
+              className="w-8 h-8 flex items-center justify-center text-[#F5F0E8] hover:text-[#D0AE89] active:bg-[#D0AE89]/20 transition-colors"
+              aria-label="Previous Vista"
+            >
+              <ChevronLeft className="w-3.5 h-3.5 text-[#D0AE89]" />
+            </button>
+            <span className="w-px h-3 bg-[#D0AE89]/20"></span>
+            <button
+              type="button"
+              onClick={() => {
+                setActiveSlide((prev) => (prev + 1) % heroSlides.length);
+                setShowEasterEgg(false);
+              }}
+              className="w-8 h-8 flex items-center justify-center text-[#F5F0E8] hover:text-[#D0AE89] active:bg-[#D0AE89]/20 transition-colors"
+              aria-label="Next Vista"
+            >
+              <ChevronRight className="w-3.5 h-3.5 text-[#D0AE89]" />
+            </button>
+          </div>
+        </div>
+
+        {/* Top Meta Line: Desktop */}
+        <div className="hidden sm:flex items-center justify-between pb-3.5 border-b border-[#D0AE89]/15 mb-8 text-xs font-sans text-[#cfc8bc]/80">
+          <div className="flex items-center gap-3">
             <span className="text-[#D0AE89] tracking-widest uppercase font-medium">
               ARCUBE
             </span>
@@ -141,8 +195,8 @@ export default function Hero({ onOpenConsultation }) {
         </div>
 
         {/* Bottom Actions Bar */}
-        <div className="pt-4 sm:pt-6 border-t border-[#D0AE89]/15 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 sm:gap-6">
-          <div className="flex items-center gap-3">
+        <div className="pt-4 sm:pt-6 border-t border-[#D0AE89]/15 flex items-center justify-between gap-4 sm:gap-6">
+          <div className="flex items-center gap-3 w-full sm:w-auto">
             {/* Primary Gold CTA */}
             <button
               onClick={onOpenConsultation}
@@ -158,56 +212,6 @@ export default function Hero({ onOpenConsultation }) {
             >
               See our work →
             </a>
-          </div>
-
-          {/* Mobile Tactile Stepper Controller */}
-          <div className="flex sm:hidden items-center justify-between gap-3 pt-2 text-xs font-sans">
-            {/* Current Slide Info with Pulse Dot & Tap to Cycle */}
-            <button
-              type="button"
-              onClick={() => {
-                setActiveSlide((prev) => (prev + 1) % heroSlides.length);
-                setShowEasterEgg(false);
-              }}
-              className="flex items-center gap-2 py-1 text-left active:opacity-75 transition-opacity"
-            >
-              <span className="w-2 h-2 rounded-full bg-[#D0AE89] animate-pulse flex-shrink-0"></span>
-              <div>
-                <span className="text-[10px] text-[#D0AE89] block uppercase tracking-widest leading-none mb-0.5 font-sans">
-                  Vista 0{activeSlide + 1} / 03
-                </span>
-                <span className="text-xs text-[#F5F0E8] font-light font-sans">
-                  {current.location}
-                </span>
-              </div>
-            </button>
-
-            {/* Easy-to-tap Chevron Arrows (40px x 40px comfortable touch area) */}
-            <div className="flex items-center bg-[#141e1a]/95 backdrop-blur-md border border-[#D0AE89]/30 rounded-sm shadow-md">
-              <button
-                type="button"
-                onClick={() => {
-                  setActiveSlide((prev) => (prev === 0 ? heroSlides.length - 1 : prev - 1));
-                  setShowEasterEgg(false);
-                }}
-                className="w-10 h-10 flex items-center justify-center text-[#F5F0E8] hover:text-[#D0AE89] active:bg-[#D0AE89]/20 transition-colors"
-                aria-label="Previous Vista"
-              >
-                <ChevronLeft className="w-4 h-4 text-[#D0AE89]" />
-              </button>
-              <span className="w-px h-4 bg-[#D0AE89]/20"></span>
-              <button
-                type="button"
-                onClick={() => {
-                  setActiveSlide((prev) => (prev + 1) % heroSlides.length);
-                  setShowEasterEgg(false);
-                }}
-                className="w-10 h-10 flex items-center justify-center text-[#F5F0E8] hover:text-[#D0AE89] active:bg-[#D0AE89]/20 transition-colors"
-                aria-label="Next Vista"
-              >
-                <ChevronRight className="w-4 h-4 text-[#D0AE89]" />
-              </button>
-            </div>
           </div>
 
           {/* Desktop Controller */}

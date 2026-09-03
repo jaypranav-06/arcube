@@ -1,7 +1,22 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth bg-[#192420]" style="background-color: #192420; color-scheme: dark;">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#192420" />
+    <meta name="color-scheme" content="dark" />
+
+    <!-- Critical instant dark canvas style to prevent white screen flash on mobile refresh -->
+    <style>
+      html, body, #root {
+        background-color: #192420 !important;
+        color: #F5F0E8;
+        min-height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+
     <!-- Adaptive Dark & Light Mode Favicons -->
     <!-- Dark Mode: Gold mark with dark cuts on dark browser tabs -->
     <link id="favicon-dark-32" rel="icon" type="image/png" sizes="32x32" href="/favicon-dark-32x32.png" media="(prefers-color-scheme: dark)" />
@@ -16,35 +31,38 @@
     <!-- Apple Touch Icon -->
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 
-    <!-- Dynamic Favicon Switcher: updates immediately when browser/OS mode changes -->
+    <!-- Dynamic Favicon Switcher: non-blocking and safe -->
     <script>
       (function() {
-        function updateFavicon() {
-          var isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-          var mode = isDark ? 'dark' : 'light';
-          var links = document.querySelectorAll("link[rel*='icon']");
-          links.forEach(function(link) {
-            if (link.getAttribute('sizes') === '32x32') {
-              link.href = '/favicon-' + mode + '-32x32.png';
-            } else if (link.getAttribute('sizes') === '16x16') {
-              link.href = '/favicon-' + mode + '-16x16.png';
-            } else if (!link.getAttribute('sizes') && link.getAttribute('rel') === 'icon') {
-              link.href = '/favicon-' + mode + '.png';
-            }
-          });
-        }
         try {
+          function updateFavicon() {
+            try {
+              var isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+              var mode = isDark ? 'dark' : 'light';
+              var links = document.querySelectorAll("link[rel*='icon']");
+              for (var i = 0; i < links.length; i++) {
+                var link = links[i];
+                var sz = link.getAttribute('sizes');
+                if (sz === '32x32') {
+                  link.href = '/favicon-' + mode + '-32x32.png';
+                } else if (sz === '16x16') {
+                  link.href = '/favicon-' + mode + '-16x16.png';
+                } else if (!sz && link.getAttribute('rel') === 'icon') {
+                  link.href = '/favicon-' + mode + '.png';
+                }
+              }
+            } catch (err) {}
+          }
           var mq = window.matchMedia('(prefers-color-scheme: dark)');
           updateFavicon();
-          if (mq.addEventListener) {
+          if (mq && mq.addEventListener) {
             mq.addEventListener('change', updateFavicon);
-          } else if (mq.addListener) {
+          } else if (mq && mq.addListener) {
             mq.addListener(updateFavicon);
           }
         } catch (e) {}
       })();
     </script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ARCUBE — Interior Design Studio Colombo</title>
     <meta name="description" content="Arcube is an interior design studio in Colombo, Sri Lanka. We create calm, modern homes and apartments with real teak wood, natural stone, and warm lighting." />
     
@@ -85,7 +103,7 @@
     }
     </script>
   </head>
-  <body class="bg-[#192420] text-[#F5F0E8] font-sans antialiased selection:bg-[#D0AE89]/30 selection:text-[#D0AE89] overflow-x-hidden min-w-[320px]">
+  <body class="bg-[#192420] text-[#F5F0E8] font-sans antialiased selection:bg-[#D0AE89]/30 selection:text-[#D0AE89] overflow-x-hidden min-w-[320px]" style="background-color: #192420;">
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

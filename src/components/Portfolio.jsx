@@ -48,10 +48,7 @@ export default function Portfolio({ onOpenConsultation }) {
         {/* Section header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 sm:mb-16 pb-6 sm:pb-8 border-b border-[#D0AE89]/15 gap-4">
           <div>
-            <span className="text-sm font-medium text-[#D0AE89] tracking-[0.12em] uppercase block mb-4 font-sans">
-              Our work
-            </span>
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-light text-[#F5F0E8] font-display tracking-tight">
+<h2 className="text-4xl sm:text-5xl lg:text-6xl font-light text-[#F5F0E8] font-display tracking-tight">
               Our projects
             </h2>
           </div>
@@ -255,30 +252,21 @@ export default function Portfolio({ onOpenConsultation }) {
               </div>
             </div>
 
-            {/* Modal Footer CTA with both Close and Consultation buttons */}
+            {/* Modal Footer CTA */}
             <div className="mt-5 sm:mt-7 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 sm:gap-4">
               <span className="text-xs text-[#cfc8bc]/60 font-sans text-center sm:text-left">
                 Colombo studio commission • {selectedProject.location}
               </span>
-              <div className="flex items-center gap-2.5 w-full sm:w-auto">
-                <button
-                  type="button"
-                  onClick={closeProjectModal}
-                  className="w-1/3 sm:w-auto px-4 py-3 bg-[#192420] border border-[#D0AE89]/30 hover:border-[#D0AE89] text-[#cfc8bc] hover:text-[#F5F0E8] text-xs font-sans transition-colors rounded-sm text-center active:scale-[0.99]"
-                >
-                  Close
-                </button>
-                <button
-                  type="button"
-                  onClick={() => {
-                    closeProjectModal();
-                    onOpenConsultation();
-                  }}
-                  className="flex-1 sm:flex-none px-6 py-3 bg-[#D0AE89] hover:bg-[#c49e75] text-[#192420] text-xs font-sans font-medium tracking-[0.08em] transition-all rounded-sm shadow-md text-center active:scale-[0.99]"
-                >
-                  Book a consultation
-                </button>
-              </div>
+              <button
+                type="button"
+                onClick={() => {
+                  closeProjectModal();
+                  onOpenConsultation();
+                }}
+                className="w-full sm:w-auto px-6 py-3 bg-[#D0AE89] hover:bg-[#c49e75] text-[#192420] text-xs font-sans font-medium tracking-[0.08em] transition-all rounded-sm shadow-md text-center active:scale-[0.99]"
+              >
+                Book a consultation for this project
+              </button>
             </div>
           </div>
         </div>

@@ -27,10 +27,7 @@ export default function Services({ onOpenConsultation }) {
 
           {/* Section Header */}
           <div className="mb-12 sm:mb-16 animate-fade-in">
-            <span className="text-sm font-sans text-[#B08D5B] mb-3 block">
-              What we do
-            </span>
-            <h2 className="text-4xl sm:text-5xl lg:text-[64px] font-serif font-normal text-[#EDE8E0] leading-[1.18]">
+<h2 className="text-4xl sm:text-5xl lg:text-[64px] font-serif font-normal text-[#EDE8E0] leading-[1.18]">
               Our services
             </h2>
           </div>

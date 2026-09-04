@@ -10,33 +10,6 @@ export default function Footer({ onOpenConsultation }) {
     <footer className="bg-[#141e1a] text-[#F5F0E8] border-t border-[#D0AE89]/15 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-10">
 
-        {/* Section 1: Pre-footer Call to Action / Quiet Invitation */}
-        <div className="py-12 sm:py-16 lg:py-20 border-b border-[#D0AE89]/15 flex flex-col lg:flex-row lg:items-end justify-between gap-8">
-          <div className="max-w-xl">
-            <span className="text-xs font-sans text-[#D0AE89] tracking-[0.2em] uppercase block mb-3">
-              Start a conversation
-            </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-light text-[#F5F0E8] leading-[1.15] tracking-tight">
-              Designing spaces to live, breathe, and belong.
-            </h2>
-            <p className="text-sm sm:text-base text-[#cfc8bc]/80 font-sans font-light leading-relaxed mt-4">
-              We work directly with homeowners across Sri Lanka to design and build custom residences, apartments, and holiday villas.
-            </p>
-          </div>
-
-          <div className="flex flex-col sm:flex-row lg:flex-col items-start sm:items-center lg:items-end gap-3 flex-shrink-0">
-            <button
-              onClick={onOpenConsultation}
-              className="w-full sm:w-auto px-7 py-3.5 rounded-sm bg-[#D0AE89] hover:bg-[#c49e75] text-[#192420] text-xs font-sans font-medium tracking-[0.08em] transition-all text-center active:scale-[0.99] shadow-sm"
-            >
-              Book a consultation
-            </button>
-            <span className="text-xs text-[#cfc8bc]/60 font-sans">
-              Or call <a href="tel:+94112584090" className="text-[#D0AE89] hover:underline">+94 11 258 4090</a>
-            </span>
-          </div>
-        </div>
-
         {/* Section 2: Main Architectural Directory */}
         <div className="py-12 sm:py-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-10 sm:gap-12">
           

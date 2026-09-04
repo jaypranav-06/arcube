@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { X, Sparkles, ArrowRight, ArrowLeft, CheckCircle2, ShieldCheck, Upload } from 'lucide-react';
 
 export default function ConsultationModal({ isOpen, onClose }) {
@@ -54,9 +54,27 @@ export default function ConsultationModal({ isOpen, onClose }) {
     onClose();
   };
 
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') {
+        resetModal();
+      }
+    };
+    if (isOpen) {
+      window.addEventListener('keydown', handleKeyDown);
+    }
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen]);
+
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-[#192420]/90 backdrop-blur-xl animate-fade-in">
-      <div className="relative w-full max-w-2xl bg-[#141e1a] border border-[#D0AE89]/30 rounded-sm shadow-2xl p-5 sm:p-8 lg:p-10 max-h-[94vh] overflow-y-auto">
+    <div
+      onClick={resetModal}
+      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-[#192420]/90 backdrop-blur-xl animate-fade-in cursor-pointer"
+    >
+      <div
+        onClick={(e) => e.stopPropagation()}
+        className="relative w-full max-w-2xl bg-[#141e1a] border border-[#D0AE89]/30 rounded-sm shadow-2xl p-5 sm:p-8 lg:p-10 max-h-[94vh] overflow-y-auto cursor-default"
+      >
         {/* Close Button */}
         <button
           onClick={resetModal}

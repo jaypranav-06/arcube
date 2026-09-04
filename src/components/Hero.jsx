@@ -131,7 +131,6 @@ export default function Hero({ onOpenConsultation }) {
             <span>•</span>
             <span className="text-[#F5F0E8]">Interior Design Studio, Colombo</span>
           </div>
-          <span className="text-sm text-[#F5F0E8]/70">{current.location}</span>
         </div>
 
         <div className="max-w-2xl mb-6 sm:mb-10">

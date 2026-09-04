@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { portfolioProjects } from '../data/portfolioData';
 import { ArrowUpRight, X, MapPin } from 'lucide-react';
 
@@ -28,6 +28,19 @@ export default function Portfolio({ onOpenConsultation }) {
     setSelectedProject(null);
     document.body.style.overflow = 'auto';
   };
+
+  // Close on Escape key press
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') {
+        closeProjectModal();
+      }
+    };
+    if (selectedProject) {
+      window.addEventListener('keydown', handleKeyDown);
+    }
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [selectedProject]);
 
   return (
     <section id="works" className="py-12 sm:py-20 lg:py-24 bg-[#192420] relative border-t border-[#D0AE89]/15">
@@ -125,11 +138,17 @@ export default function Portfolio({ onOpenConsultation }) {
 
       {/* Architectural Case Study Modal */}
       {selectedProject && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 lg:p-10 bg-[#192420]/95 backdrop-blur-2xl animate-fade-in">
-          <div className="relative w-full max-w-4xl max-h-[92vh] sm:max-h-[94vh] overflow-y-auto bg-[#141e1a] border border-[#D0AE89]/30 shadow-2xl p-4 sm:p-7 lg:p-9 rounded-sm">
+        <div
+          onClick={closeProjectModal}
+          className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 lg:p-10 bg-[#192420]/95 backdrop-blur-2xl animate-fade-in cursor-pointer"
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="relative w-full max-w-4xl max-h-[92vh] sm:max-h-[94vh] overflow-y-auto bg-[#141e1a] border border-[#D0AE89]/30 shadow-2xl p-4 sm:p-7 lg:p-9 rounded-sm cursor-default"
+          >
             
-            {/* Top Bar: Category on left, Close button on right — perfect symmetry */}
-            <div className="flex items-center justify-between pb-3 border-b border-[#D0AE89]/15 mb-3 sm:mb-4">
+            {/* Top Bar: Sticky so it stays visible while scrolling */}
+            <div className="sticky -top-4 sm:-top-7 lg:-top-9 z-30 bg-[#141e1a] pt-4 sm:pt-7 lg:pt-9 -mt-4 sm:-mt-7 lg:-mt-9 pb-3 border-b border-[#D0AE89]/15 mb-3 sm:mb-4 flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <span className="text-[11px] font-sans font-medium uppercase tracking-wider px-2 py-0.5 rounded-sm bg-[#192420] border border-[#D0AE89]/30 text-[#D0AE89]">
                   {selectedProject.category}
@@ -236,20 +255,30 @@ export default function Portfolio({ onOpenConsultation }) {
               </div>
             </div>
 
-            {/* Modal Footer CTA */}
+            {/* Modal Footer CTA with both Close and Consultation buttons */}
             <div className="mt-5 sm:mt-7 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 sm:gap-4">
               <span className="text-xs text-[#cfc8bc]/60 font-sans text-center sm:text-left">
                 Colombo studio commission • {selectedProject.location}
               </span>
-              <button
-                onClick={() => {
-                  closeProjectModal();
-                  onOpenConsultation();
-                }}
-                className="w-full sm:w-auto px-6 py-3 bg-[#D0AE89] hover:bg-[#c49e75] text-[#192420] text-xs font-sans font-medium tracking-[0.08em] transition-all rounded-sm shadow-md text-center active:scale-[0.99]"
-              >
-                Book a consultation for this project
-              </button>
+              <div className="flex items-center gap-2.5 w-full sm:w-auto">
+                <button
+                  type="button"
+                  onClick={closeProjectModal}
+                  className="w-1/3 sm:w-auto px-4 py-3 bg-[#192420] border border-[#D0AE89]/30 hover:border-[#D0AE89] text-[#cfc8bc] hover:text-[#F5F0E8] text-xs font-sans transition-colors rounded-sm text-center active:scale-[0.99]"
+                >
+                  Close
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    closeProjectModal();
+                    onOpenConsultation();
+                  }}
+                  className="flex-1 sm:flex-none px-6 py-3 bg-[#D0AE89] hover:bg-[#c49e75] text-[#192420] text-xs font-sans font-medium tracking-[0.08em] transition-all rounded-sm shadow-md text-center active:scale-[0.99]"
+                >
+                  Book a consultation
+                </button>
+              </div>
             </div>
           </div>
         </div>

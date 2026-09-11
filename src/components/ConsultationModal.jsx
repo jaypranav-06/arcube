@@ -61,8 +61,15 @@ export default function ConsultationModal({ isOpen, onClose }) {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    try {
+      await fetch('/api/submit-consultation', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
+    } catch {}
     setIsSubmitted(true);
   };
 
@@ -354,7 +361,7 @@ export default function ConsultationModal({ isOpen, onClose }) {
             </div>
 
             <span className="text-[10px] sm:text-xs font-sans text-[#D0AE89] tracking-widest uppercase block mb-2">
-              Enquiry Received // Ref #ARC-LK-2026
+              Enquiry Received — Ref #ARC-LK-2026
             </span>
 
             <h3 className="text-2xl sm:text-3xl text-[#F5F0E8] font-light tracking-wide mb-3 sm:mb-4">

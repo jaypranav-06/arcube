@@ -15,7 +15,7 @@ export default function Footer({ onOpenConsultation }) {
           
           {/* Brand & Studio Identity */}
           <div className="lg:col-span-4 space-y-4">
-            <a href="#" className="inline-flex items-center gap-2.5 group" aria-label="Arcube Home">
+            <a href="/" className="inline-flex items-center gap-2.5 group" aria-label="Arcube Home">
               <img
                 src="/images/brand/arcube-emblem.png"
                 alt="Arcube"

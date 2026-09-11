@@ -29,7 +29,7 @@ export default function Navbar({ onOpenConsultation }) {
         <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-10 flex items-center justify-between">
 
           {/* Logo */}
-          <a href="#" className="flex items-center gap-3 group py-1" aria-label="Arcube Home">
+          <a href="/" className="flex items-center gap-3 group py-1" aria-label="Arcube Home">
             <img
               src="/images/brand/arcube-emblem.png"
               alt="Arcube"

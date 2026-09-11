@@ -120,10 +120,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     if (!$generatedImageUrl) {
-        http_response_code(500);
+        http_response_code(503);
         echo json_encode([
             'success' => false,
-            'message' => 'Generation failed after retry. This attempt was not counted against your limit.'
+            'message' => 'Our design preview service is currently busy. Please try again later.'
         ]);
         exit;
     }

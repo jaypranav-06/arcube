@@ -1,68 +1,82 @@
 import React from 'react';
+import { ArrowUpRight } from 'lucide-react';
 
 export default function Services({ onOpenConsultation }) {
   const services = [
     {
-      title: 'Full home interior design',
-      description: 'Complete room layouts, bespoke cabinetry drawings, lighting plans, and site supervision from concept through move-in day.'
+      number: '01',
+      title: 'Full Home Interiors',
+      description: 'End-to-end space planning, 3D concepts, and on-site supervision until move-in day.'
     },
     {
-      title: 'Custom furniture & cabinetry',
-      description: 'Made-to-measure wardrobes, kitchen units, dining tables, and storage consoles built by master carpenters to fit your space.'
+      number: '02',
+      title: 'Custom Joinery & Furniture',
+      description: 'Bespoke wardrobes, modern kitchens, and dining tables built to measure in solid Ceylon teak.'
     },
     {
-      title: 'Lighting & room comfort',
-      description: 'Thoughtful lighting layouts, dimmer controls, and quiet acoustic wall and ceiling finishes to make living spaces peaceful and restful.'
+      number: '03',
+      title: 'Lighting & Comfort',
+      description: 'Warm architectural lighting layers, automated dimmer scenes, and quiet acoustic finishes.'
     },
     {
-      title: 'Renovations & villa makeovers',
-      description: 'Structural and interior updates for older houses, apartments, and holiday homes, managed on-site from demolition to final paint.'
+      number: '04',
+      title: 'Villa & Home Renovations',
+      description: 'Open-plan layout updates, tropical cross-ventilation, and turnkey contractor management.'
     }
   ];
 
   return (
-    <section id="services" className="bg-[#15201B] py-20 sm:py-28 lg:py-32 relative">
+    <section id="services" className="py-14 sm:py-20 lg:py-24 bg-[#192420] relative border-t border-[#D0AE89]/15">
       <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-10">
-        <div className="max-w-[760px]">
-
-          {/* Section Header */}
-          <div className="mb-12 sm:mb-16 animate-fade-in">
-<h2 className="text-4xl sm:text-5xl lg:text-[64px] font-serif font-normal text-[#EDE8E0] leading-[1.18]">
-              Our services
+        
+        {/* Header — Short & Crisp */}
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between pb-6 sm:pb-8 border-b border-[#D0AE89]/15 mb-8 sm:mb-12 gap-4">
+          <div>
+            <span className="text-xs font-sans font-medium text-[#D0AE89] tracking-[0.2em] uppercase block mb-2">
+              What we offer
+            </span>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-[#F5F0E8] font-display tracking-tight">
+              Our <span className="font-extralight text-[#D0AE89]">services</span>
             </h2>
           </div>
+          <p className="text-xs sm:text-sm text-[#cfc8bc] font-sans font-light max-w-sm leading-relaxed">
+            Four focused architectural disciplines tailored to modern residences in Sri Lanka.
+          </p>
+        </div>
 
-          {/* Plain Stacked List */}
-          <div className="border-b border-[#2A362F]">
-            {services.map((service) => (
-              <div
-                key={service.title}
-                className="border-t border-[#2A362F] py-10 sm:py-12 lg:py-14"
-              >
-                <h3 className="text-2xl sm:text-3xl font-serif text-[#EDE8E0] font-normal leading-snug hover:text-[#EDE8E0]/90 transition-colors">
-                  {service.title}
+        {/* 4 Crisp & Readable Cards Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+          {services.map((srv) => (
+            <div
+              key={srv.number}
+              onClick={onOpenConsultation}
+              className="group relative bg-[#141e1a] rounded-sm border border-[#D0AE89]/20 hover:border-[#D0AE89]/60 transition-all duration-300 p-5 sm:p-6 flex flex-col justify-between cursor-pointer hover:shadow-lg hover:-translate-y-0.5"
+            >
+              <div>
+                {/* Number & Top Arrow */}
+                <div className="flex items-center justify-between pb-4 border-b border-[#D0AE89]/10 mb-4">
+                  <span className="text-xl font-display font-light text-[#D0AE89]">
+                    {srv.number}
+                  </span>
+                  <div className="w-7 h-7 rounded-full bg-[#192420] border border-[#D0AE89]/20 flex items-center justify-center text-[#D0AE89] group-hover:text-[#F5F0E8] group-hover:border-[#D0AE89] transition-colors">
+                    <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  </div>
+                </div>
+
+                {/* Service Title */}
+                <h3 className="text-lg sm:text-xl text-[#F5F0E8] font-display font-light tracking-wide mb-2 group-hover:text-[#D0AE89] transition-colors">
+                  {srv.title}
                 </h3>
-                <p className="text-base sm:text-lg text-[#9CA69E] font-sans font-normal leading-relaxed mt-3 sm:mt-4">
-                  {service.description}
+
+                {/* Short 1-Line Description */}
+                <p className="text-xs sm:text-sm text-[#cfc8bc] font-sans font-light leading-relaxed">
+                  {srv.description}
                 </p>
               </div>
-            ))}
-          </div>
-
-          {/* Reassurance & CTA (inline on desktop, stacked on mobile) */}
-          <div className="pt-10 sm:pt-14 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
-            <p className="text-sm sm:text-base text-[#EDE8E0] font-sans font-normal leading-relaxed">
-              Not sure where to start? We'll walk you through it.
-            </p>
-            <button
-              onClick={onOpenConsultation}
-              className="self-start sm:self-auto px-6 py-3.5 rounded-sm bg-[#B08D5B] hover:bg-[#9c7b4d] text-[#15201B] text-sm font-sans font-medium transition-colors whitespace-nowrap active:scale-[0.99]"
-            >
-              Book a consultation
-            </button>
-          </div>
-
+            </div>
+          ))}
         </div>
+
       </div>
     </section>
   );

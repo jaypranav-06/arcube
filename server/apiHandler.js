@@ -88,10 +88,10 @@ export function handleApiRoutes(req, res, next) {
         }
 
         if (!resultImage) {
-          res.writeHead(500, { 'Content-Type': 'application/json' });
+          res.writeHead(503, { 'Content-Type': 'application/json' });
           res.end(JSON.stringify({
             success: false,
-            message: 'Image transformation failed. This attempt was not counted against your limit.'
+            message: 'Our design preview service is currently busy. Please try again later.'
           }));
           return;
         }
@@ -194,7 +194,17 @@ async function callOpenRouter(apiKey, base64Image, prompt) {
   });
 
   if (!response.ok) {
-    throw new Error(`OpenRouter HTTP ${response.status}`);
+    const status = response.status;
+    let errorMsg = `OpenRouter HTTP ${status}`;
+    try {
+      const errJson = await response.json();
+      errorMsg = errJson.error?.message || errJson.message || errorMsg;
+    } catch {}
+
+    if (status === 401 || status === 402 || status === 403 || status === 429 || status === 503) {
+      throw new Error('Our design preview service is currently busy. Please try again later.');
+    }
+    throw new Error(errorMsg);
   }
 
   const json = await response.json();

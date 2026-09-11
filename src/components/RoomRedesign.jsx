@@ -81,20 +81,86 @@ export default function RoomRedesign() {
   const handleGateSubmit = (e) => { e.preventDefault(); if (!userDetails.name.trim() || !userDetails.phone.trim()) return; executeGeneration(); };
 
   const executeGeneration = async () => {
-    setViewState('generating'); setErrorMessage('');
+    setViewState('generating');
+    setErrorMessage('');
     try {
       const response = await fetch('/api/generate-room', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name: userDetails.name, contact: userDetails.phone, room_type: selectedRoomType, style: selectedStyle, extra_note: extraNote, image: uploadedBase64 })
+        body: JSON.stringify({
+          name: userDetails.name,
+          contact: userDetails.phone,
+          room_type: selectedRoomType,
+          style: selectedStyle,
+          extra_note: extraNote,
+          image: uploadedBase64
+        })
       });
-      const data = await response.json();
-      if (response.status === 429 || data.blocked) { setViewState('blocked'); return; }
-      if (!response.ok || !data.success) throw new Error(data.message || 'Generation failed. Please try again.');
-      const newGen = { id: Date.now(), image: data.image, originalImage: uploadedImage, roomType: selectedRoomType, style: selectedStyle, note: extraNote, timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) };
+      const data = await response.json().catch(() => ({}));
+
+      // User reached personal 2 free attempt limit
+      if (response.status === 429 && data.blocked) {
+        setViewState('blocked');
+        return;
+      }
+
+      // Check for token expired / out of credit / quota / rate limit / 401 / 402 / 503 errors
+      if (!response.ok || !data.success) {
+        const msg = (data.message || '').toLowerCase();
+        if (
+          response.status === 401 ||
+          response.status === 402 ||
+          response.status === 403 ||
+          response.status === 429 ||
+          response.status === 503 ||
+          msg.includes('token') ||
+          msg.includes('credit') ||
+          msg.includes('quota') ||
+          msg.includes('expired') ||
+          msg.includes('rate limit') ||
+          msg.includes('balance') ||
+          msg.includes('busy') ||
+          msg.includes('capacity') ||
+          msg.includes('exhausted')
+        ) {
+          throw new Error('Our design preview service is currently at capacity or updating. Please try again later.');
+        }
+
+        throw new Error(data.message || 'Generation could not be completed. Please try again later.');
+      }
+
+      const newGen = {
+        id: Date.now(),
+        image: data.image,
+        originalImage: uploadedImage,
+        roomType: selectedRoomType,
+        style: selectedStyle,
+        note: extraNote,
+        timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+      };
       const updatedGens = [...generations, newGen];
-      saveGenerations(updatedGens); setActiveGenerationIndex(updatedGens.length - 1); setPreferredDesignIndex(updatedGens.length - 1); setViewState('result');
-    } catch (err) { setErrorMessage(err.message || 'Something went wrong. No attempt was counted against your limit.'); setViewState('select'); }
+      saveGenerations(updatedGens);
+      setActiveGenerationIndex(updatedGens.length - 1);
+      setPreferredDesignIndex(updatedGens.length - 1);
+      setViewState('result');
+    } catch (err) {
+      const errStr = (err.message || '').toLowerCase();
+      if (
+        errStr.includes('token') ||
+        errStr.includes('credit') ||
+        errStr.includes('quota') ||
+        errStr.includes('expired') ||
+        errStr.includes('balance') ||
+        errStr.includes('busy') ||
+        errStr.includes('capacity') ||
+        errStr.includes('try again later')
+      ) {
+        setErrorMessage('Our design preview service is currently busy. Please try again later.');
+      } else {
+        setErrorMessage('Our design preview service is currently busy. Please try again later.');
+      }
+      setViewState('select');
+    }
   };
 
   const updateSliderPosition = useCallback((clientX) => {
@@ -184,9 +250,17 @@ export default function RoomRedesign() {
         </div>
 
         {errorMessage && (
-          <div className="mb-6 p-4 rounded-sm bg-red-900/20 border border-red-500/30 text-sm text-red-200 flex items-center gap-3">
-            <AlertCircle className="w-4 h-4 text-red-400 flex-shrink-0" />
-            <span>{errorMessage}</span>
+          <div className="mb-6 p-4 rounded-sm bg-[#192420] border border-[#D0AE89]/40 text-sm text-[#F5F0E8] flex items-center justify-between gap-3 shadow-md animate-fade-in">
+            <div className="flex items-center gap-3">
+              <AlertCircle className="w-4 h-4 text-[#D0AE89] flex-shrink-0" />
+              <span className="text-xs sm:text-sm font-sans">{errorMessage}</span>
+            </div>
+            <button
+              onClick={() => setErrorMessage('')}
+              className="text-xs font-sans text-[#D0AE89] hover:text-[#F5F0E8] uppercase tracking-wider font-medium px-2 py-1 rounded-sm border border-[#D0AE89]/30 transition-colors flex-shrink-0"
+            >
+              Dismiss
+            </button>
           </div>
         )}
 

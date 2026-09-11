@@ -18,6 +18,24 @@ export default function ConsultationModal({ isOpen, onClose }) {
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
 
+  const resetModal = () => {
+    setIsSubmitted(false);
+    setStep(1);
+    onClose();
+  };
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') {
+        resetModal();
+      }
+    };
+    if (isOpen) {
+      window.addEventListener('keydown', handleKeyDown);
+    }
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen]);
+
   if (!isOpen) return null;
 
   const elementOptions = [
@@ -47,24 +65,6 @@ export default function ConsultationModal({ isOpen, onClose }) {
     e.preventDefault();
     setIsSubmitted(true);
   };
-
-  const resetModal = () => {
-    setIsSubmitted(false);
-    setStep(1);
-    onClose();
-  };
-
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.key === 'Escape') {
-        resetModal();
-      }
-    };
-    if (isOpen) {
-      window.addEventListener('keydown', handleKeyDown);
-    }
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [isOpen]);
 
   return (
     <div

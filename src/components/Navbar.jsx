@@ -35,8 +35,8 @@ export default function Navbar({ onOpenConsultation }) {
               alt="Arcube"
               className="h-9 sm:h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-[1.05]"
             />
-            <span className="text-xl sm:text-2xl font-light tracking-[0.22em] text-[#F5F0E8] group-hover:text-[#D0AE89] transition-colors lowercase font-display">
-              arcube
+            <span className="text-xl sm:text-2xl font-light tracking-[0.22em] text-[#F5F0E8] group-hover:text-[#D0AE89] transition-colors font-display">
+              Arcube
             </span>
           </a>
 

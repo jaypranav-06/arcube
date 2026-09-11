@@ -100,8 +100,8 @@ export default function ConsultationModal({ isOpen, onClose }) {
                   alt="Arcube" 
                   className="h-6 sm:h-7 w-auto object-contain"
                 />
-                <span className="text-lg sm:text-xl font-light tracking-[0.22em] text-[#F5F0E8] lowercase">
-                  arcube
+                <span className="text-lg sm:text-xl font-light tracking-[0.22em] text-[#F5F0E8]">
+                  Arcube
                 </span>
               </div>
               <div className="flex items-center gap-2 text-[10px] sm:text-xs font-sans text-[#D0AE89] tracking-wider uppercase mb-1">

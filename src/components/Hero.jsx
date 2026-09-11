@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { ArrowDownRight, ChevronLeft, ChevronRight } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 export default function Hero({ onOpenConsultation }) {
   const [activeSlide, setActiveSlide] = useState(0);
@@ -35,6 +35,13 @@ export default function Hero({ onOpenConsultation }) {
   ];
 
   const current = heroSlides[activeSlide] || heroSlides[0];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveSlide((prev) => (prev + 1) % heroSlides.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, []);
 
   const handleTouchStart = (e) => {
     if (e && e.touches && e.touches[0]) {
@@ -146,15 +153,6 @@ export default function Hero({ onOpenConsultation }) {
         {/* Bottom Actions Bar */}
         <div className="pt-4 sm:pt-6 border-t border-[#D0AE89]/15 flex items-center justify-between gap-4 sm:gap-6">
           <div className="flex items-center gap-3 w-full sm:w-auto">
-            {/* Primary Gold CTA */}
-            <button
-              onClick={onOpenConsultation}
-              className="flex-1 sm:flex-none justify-center px-5 sm:px-6 py-3 rounded-sm bg-[#D0AE89] hover:bg-[#c49e75] text-[#192420] text-sm font-medium tracking-[0.06em] transition-all shadow-[0_4px_20px_rgba(208,174,137,0.25)] flex items-center gap-2 group active:scale-[0.99] font-sans"
-            >
-              <span>Book a consultation</span>
-              <ArrowDownRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:translate-y-0.5" />
-            </button>
-
             <a
               href="#works"
               className="px-4 sm:px-5 py-3 text-sm font-sans text-[#F5F0E8]/85 hover:text-[#D0AE89] transition-colors text-center"
@@ -163,26 +161,6 @@ export default function Hero({ onOpenConsultation }) {
             </a>
           </div>
 
-          {/* Desktop Controller */}
-          <div className="hidden sm:flex items-center gap-3 text-xs font-sans">
-            <div className="flex items-center gap-1 p-1 rounded-sm bg-[#141e1a]/90 backdrop-blur-md border border-[#D0AE89]/20">
-              {heroSlides.map((slide, idx) => (
-                <button
-                  key={slide.id}
-                  onClick={() => {
-                    setActiveSlide(idx);
-                  }}
-                  className={`px-3 py-1 text-xs font-sans rounded-sm transition-all ${
-                    activeSlide === idx
-                      ? 'bg-[#D0AE89] text-[#192420] font-medium'
-                      : 'text-[#cfc8bc]/60 hover:text-[#F5F0E8]'
-                  }`}
-                >
-                  0{idx + 1}
-                </button>
-              ))}
-            </div>
-          </div>
         </div>
       </div>
     </section>

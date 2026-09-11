@@ -21,8 +21,8 @@ export default function Footer({ onOpenConsultation }) {
                 alt="Arcube"
                 className="h-8 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
               />
-              <span className="text-xl font-light tracking-[0.22em] text-[#F5F0E8] lowercase font-display group-hover:text-[#D0AE89] transition-colors">
-                arcube
+              <span className="text-xl font-light tracking-[0.22em] text-[#F5F0E8] font-display group-hover:text-[#D0AE89] transition-colors">
+                Arcube
               </span>
             </a>
             <p className="text-xs sm:text-sm text-[#cfc8bc]/75 font-sans font-light leading-relaxed max-w-sm">
@@ -61,14 +61,13 @@ export default function Footer({ onOpenConsultation }) {
             </h3>
             <div className="space-y-2.5 text-xs sm:text-sm font-sans text-[#cfc8bc]/80">
               <div>
-                <a href="tel:+94112584090" className="hover:text-[#D0AE89] transition-colors block">
-                  +94 11 258 4090
+                <a href="tel:+94758127722" className="hover:text-[#D0AE89] transition-colors block">
+                  +94 75 812 7722
                 </a>
-                <span className="text-[11px] text-[#cfc8bc]/50">Mon – Sat, 9:00 AM – 6:00 PM</span>
               </div>
               <div>
-                <a href="mailto:hello@arcube.com" className="hover:text-[#D0AE89] transition-colors block">
-                  hello@arcube.com
+                <a href="mailto:hello@arcubeinteriors.com" className="hover:text-[#D0AE89] transition-colors block">
+                  hello@arcubeinteriors.com
                 </a>
               </div>
               <div className="pt-1 text-[#cfc8bc]/70">
